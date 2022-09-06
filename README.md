@@ -15,6 +15,7 @@ My technology stack for this project is as follows:
 - **geckodriver** as the secondary remote control interface
 - **Visual Studio Code** as the main integrated development environment
 - **PyCharm** as the secondary integrated development environment
+- **GitHub** as the version control system
 - last but not least is my experience as a senior software tester for 6 years
 
 By completing this project, I hope to finally understand the basics of **Automation Testing**.
