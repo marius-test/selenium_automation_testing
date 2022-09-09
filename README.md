@@ -2,7 +2,7 @@
 
 The goal is to fully write automated test cases for the following website https://the-internet.herokuapp.com/.
 
-This website has almost 44 subpages with almost all of the functionalities found on a modern website.
+This website has 44 subpages with almost all of the functionalities found on a modern website.
 
 The technology stack used for this project is the following:
 
