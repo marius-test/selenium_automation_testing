@@ -4,20 +4,24 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
-import time
+
+PATH = Service("C:\\Users\\mariu\\chromedriver.exe")
+title = "Welcome to the-internet"
+subtitle = "Available Examples"
+url = "https://the-internet.herokuapp.com/"
 
 
-class SanityTest(unittest.TestCase):
+class Sanity(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome(r"C:\Users\mariu\chromedriver.exe")
+        self.driver = webdriver.Chrome(service=PATH)
     
-    def test(self):
-        url = "https://the-internet.herokuapp.com/"
+    def test_homepage_reached(self):
         driver = self.driver
         driver.maximize_window()
         driver.get(url)
-        title = driver.find_element(by=By.TAG_NAME, value="h1").text
-        self.assertEqual(title, "Welcome to the-internet")
+        WebDriverWait(driver, 5).until(expected_conditions.presence_of_element_located((By.TAG_NAME, "h1")))
+        self.assertEqual(driver.find_element(by=By.TAG_NAME, value="h1").text, title)
+        self.assertEqual(driver.find_element(by=By.TAG_NAME, value="h2").text, subtitle)
     
     def tearDown(self):
         self.driver.quit()
@@ -25,4 +29,3 @@ class SanityTest(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-    

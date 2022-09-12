@@ -1,10 +1,16 @@
+import unittest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions
+import time
 
-
-PATH = Service(r"C:\Users\mariu\chromedriver.exe")
+PATH = Service("C:\\Users\\mariu\\chromedriver.exe")
 driver = webdriver.Chrome(service=PATH)
-url = r"https://the-internet.herokuapp.com/"
+url = "https://the-internet.herokuapp.com/"
+driver.get(url)
+driver.quit()
 
 
 def main():
