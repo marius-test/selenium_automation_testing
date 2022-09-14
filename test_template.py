@@ -4,6 +4,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
 
 PATH = Service("C:\\Users\mariu\\chromedriver.exe")
 url = "https://the-internet.herokuapp.com/"
@@ -19,15 +20,15 @@ class TestName(unittest.TestCase):
     
     def test_x(self):
         driver = self.driver
-        # waits here
         # locators here
+        # waits here
         # actions here
         self.assertEqual(1, 1)
     
     def test_y(self):
         driver = self.driver
-        # waits here
         # locators here
+        # waits here
         # actions here
         self.assertEqual(1, 1)
     

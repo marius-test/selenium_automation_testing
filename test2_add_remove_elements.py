@@ -32,8 +32,10 @@ class AddRemoveElement(unittest.TestCase):
         driver.find_element(by=By.CSS_SELECTOR, value=".added-manually").click()
         self.assertFalse(driver.find_element(by=By.CSS_SELECTOR, value=".added-manually").is_displayed())
         
+        # alternatively
         # self.assertTrue(WebDriverWait(driver, 5).until(EC.invisibility_of_element_located((By.CSS_SELECTOR, ".added-manually"))))
-
+        
+        # not working
         # assert not driver.find_element(by=By.CSS_SELECTOR, value=".added-manually").is_displayed()
         # assert not len(driver.find_element(by=By.CSS_SELECTOR, value=".added-manually").text)
         
