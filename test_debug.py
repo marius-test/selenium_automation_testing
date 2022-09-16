@@ -13,15 +13,3 @@ PATH = Service("C:\\Users\\mariu\\chromedriver.exe")
 driver = webdriver.Chrome(service=PATH)
 url = "https://the-internet.herokuapp.com/"
 driver.get(url)
-driver.find_element(by=By.CSS_SELECTOR, value="a[href='/basic_auth']").click()
-ActionChains(driver).send_keys(Keys.ESCAPE).perform()
-print(driver.find_element(by=By.CSS_SELECTOR, value="body").text)
-
-"""
-def main():
-    pass
-
-
-if __name__ == '__main__':
-    main()
-"""

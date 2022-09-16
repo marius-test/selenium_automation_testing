@@ -22,19 +22,19 @@ class BasicAuth(unittest.TestCase):
         driver = self.driver
         driver.maximize_window()
         driver.get(url)
-    """
+
     def test_login_successful(self):
         driver = self.driver
         login_url = f"https://{username}:{password}@the-internet.herokuapp.com/basic_auth"
         driver.get(login_url)
         self.assertEqual(title, driver.find_element(by=By.TAG_NAME, value="h3").text)
         self.assertEqual(text, driver.find_element(by=By.TAG_NAME, value="p").text)
-    """
+
     def test_login_failed(self):
         driver = self.driver
         driver.find_element(by=By.CSS_SELECTOR, value="a[href='/basic_auth']").click()
-        driver.find_element(by=By.TAG_NAME, value="body").send_keys(Keys.ESCAPE)
-        # self.assertEqual(driver.find_element(by=By.TAG_NAME, value="body").text, "Not authorized")
+        driver.find_element(by=By.XPATH, value="//body").send_keys(Keys.ESCAPE)
+        self.assertEqual(driver.find_element(by=By.TAG_NAME, value="body").text, "Not authorized")
 
     def tearDown(self):
         time.sleep(60)

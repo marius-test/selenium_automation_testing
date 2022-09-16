@@ -8,7 +8,7 @@ from selenium.webdriver.common.keys import Keys
 
 PATH = Service("C:\\Users\mariu\\chromedriver.exe")
 url = "https://the-internet.herokuapp.com/"
-# constants here (test data, etc)
+# test data here
 
 
 class TestName(unittest.TestCase):
@@ -20,16 +20,12 @@ class TestName(unittest.TestCase):
     
     def test_x(self):
         driver = self.driver
-        # locators here
-        # waits here
-        # actions here
+        # locators, waits, actions here
         self.assertEqual(1, 1)
     
     def test_y(self):
         driver = self.driver
-        # locators here
-        # waits here
-        # actions here
+        # locators, waits, actions here
         self.assertEqual(1, 1)
     
     def tearDown(self):
