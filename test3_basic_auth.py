@@ -4,9 +4,10 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.alert import Alert
+# from selenium.webdriver.common.action_chains import ActionChains
+# from selenium.webdriver.common.keys import Keys
+# from selenium.webdriver.common.alert import Alert
+from pynput.keyboard import Key, Controller
 import time
 
 PATH = Service("C:\\Users\mariu\\chromedriver.exe")
@@ -33,11 +34,12 @@ class BasicAuth(unittest.TestCase):
     def test_login_failed(self):
         driver = self.driver
         driver.find_element(by=By.CSS_SELECTOR, value="a[href='/basic_auth']").click()
-        driver.find_element(by=By.XPATH, value="//body").send_keys(Keys.ESCAPE)
+        Controller().press(Key.esc)
+        Controller().release(Key.esc)
+        time.sleep(2)
         self.assertEqual(driver.find_element(by=By.TAG_NAME, value="body").text, "Not authorized")
 
     def tearDown(self):
-        time.sleep(60)
         self.driver.quit()
 
 

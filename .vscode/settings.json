@@ -3,5 +3,8 @@
         "abtest",
         "chromedriver",
         "mariu"
+    ],
+    "cSpell.words": [
+        "pynput"
     ]
 }
