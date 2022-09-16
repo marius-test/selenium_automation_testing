@@ -7,6 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.alert import Alert
+from pynput.keyboard import Key, Controller
 import time
 
 PATH = Service("C:\\Users\mariu\\chromedriver.exe")
