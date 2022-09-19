@@ -2,11 +2,11 @@
 
 The goal is to fully write automated test cases for the following website https://the-internet.herokuapp.com/.
 
-This website has 44 subpages with almost all of the functionalities found on a modern website.
+The website has 44 pages with most of the functionalities found on a modern website.
 
 The technology stack used for this project is the following:
 
-- **Python 3.9** or **Python 3.10** as the programming language
+- **Python 3.10** as the main programming language
 - **unittest** as the testing framework
 - **Selenium WebDriver** as the automation framework
 - **chromedriver** as the main remote control interface
@@ -14,6 +14,6 @@ The technology stack used for this project is the following:
 - **Visual Studio Code** as the main integrated development environment
 - **PyCharm** as the secondary integrated development environment
 - **GitHub** as the version control system
-- more than 5 years of experience as a Senior Software Tester
+- more than 5 years of software testing experience as a QA Engineer
 
-By completing this project, I hope to understand the basics of **Automation Testing**.
+By completing this project, I aim to understand the basics of **Automation Testing**.
