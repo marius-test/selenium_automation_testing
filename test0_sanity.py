@@ -15,8 +15,8 @@ class Sanity(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome(service=PATH)
         driver = self.driver
-        driver.maximize_window()
         driver.get(url)
+        driver.maximize_window()
     
     def test_homepage_reached(self):
         driver = self.driver

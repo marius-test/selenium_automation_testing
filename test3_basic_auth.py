@@ -1,3 +1,4 @@
+import time
 import unittest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -5,7 +6,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from pynput.keyboard import Key, Controller
-import time
 
 PATH = Service("C:\\Users\mariu\\chromedriver.exe")
 url = "https://the-internet.herokuapp.com/"
@@ -18,8 +18,8 @@ class BasicAuth(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome(service=PATH)
         driver = self.driver
-        driver.maximize_window()
         driver.get(url)
+        driver.maximize_window()
 
     def test_login_successful(self):
         driver = self.driver

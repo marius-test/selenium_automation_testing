@@ -15,8 +15,8 @@ class ABTesting(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome(service=PATH)
         driver = self.driver
-        driver.maximize_window()
         driver.get(url)
+        driver.maximize_window()
     
     def test_title_is_correct(self):
         driver = self.driver

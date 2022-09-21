@@ -2,7 +2,6 @@ import time
 import unittest
 import urllib3
 import requests
-from requests.exceptions import MissingSchema, InvalidSchema, InvalidURL
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -15,8 +14,19 @@ from pynput.keyboard import Key, Controller
 
 PATH = Service("C:\\Users\\mariu\\chromedriver.exe")
 driver = webdriver.Chrome(service=PATH)
-url = "https://the-internet.herokuapp.com/"
-driver.get(url)
+
+broken_images = 0
+
+driver.get("https://the-internet.herokuapp.com/broken_images")
 driver.maximize_window()
-driver.find_element(by=By.CSS_SELECTOR, value="a[href='/broken_images']").click()
-WebDriverWait(driver, 5).until(EC.presence_of_all_elements_located(driver.find_element(by=By.TAG_NAME, value="h3")))
+
+image_list = driver.find_elements(by=By.TAG_NAME, value="img")
+
+for image in image_list:
+    response = requests.get(image.get_attribute('src'), stream=True)
+    if response.status_code != 200:
+        broken_images += 1
+
+driver.quit()
+
+print(f"The number of broken images is: {broken_images}.")

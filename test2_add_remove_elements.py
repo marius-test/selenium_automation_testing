@@ -13,8 +13,8 @@ class AddRemoveElement(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome(service=PATH)
         driver = self.driver
-        driver.maximize_window()
         driver.get(url)
+        driver.maximize_window()
 
     def test_add_element(self):
         driver = self.driver
