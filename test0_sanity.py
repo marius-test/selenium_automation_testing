@@ -20,7 +20,7 @@ class Sanity(unittest.TestCase):
     
     def test_homepage_reached(self):
         driver = self.driver
-        WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
+        WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))  
         self.assertEqual(driver.find_element(by=By.TAG_NAME, value="h1").text, title)
         self.assertEqual(driver.find_element(by=By.TAG_NAME, value="h2").text, subtitle)
     

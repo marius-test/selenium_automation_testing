@@ -28,8 +28,7 @@ class TestBrokenImages(unittest.TestCase):
         WebDriverWait(driver, 5).until(EC.presence_of_all_elements_located(driver.find_element(by=By.TAG_NAME, value="h3")))
     
     def tearDown(self):
-        time.sleep(5)
-        # self.driver.quit()
+        self.driver.quit()
 
 
 if __name__ == 'main':
