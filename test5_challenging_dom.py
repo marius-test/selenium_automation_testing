@@ -12,6 +12,8 @@ title = "Challenging DOM"
 text = "The hardest part in automated web testing is finding the best locators (e.g., ones that well named, unique, and unlikely to change). It's more often than not that the application you're testing was not built with this concept in mind. This example demonstrates that with unique IDs, a table with no helpful locators, and a canvas element."
 button_list = ["foo", "bar", "baz", "qux"]
 header_list = ["Lorem", "Ipsum", "Dolor", "Sit", "Amet", "Diceret", "Action"]
+content_list = ["Iuvaret0", "Apeirian0", "Adipisci0", "Definiebas0", "Consequuntur0", "Phaedrum0"]
+
 
 class TestName(unittest.TestCase):
     def setUp(self):
@@ -21,7 +23,7 @@ class TestName(unittest.TestCase):
         driver.maximize_window()
         driver.find_element(by=By.XPATH, value="//a[normalize-space()='Challenging DOM']").click()
         WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h3"))) 
-    """
+
     def test_title_text(self):
         driver = self.driver
         self.assertEqual(driver.find_element(by=By.TAG_NAME, value="h3").text, title)
@@ -48,11 +50,12 @@ class TestName(unittest.TestCase):
         table_headers = driver.find_elements(by=By.TAG_NAME, value="th")
         for x in range(0, 7):
             self.assertEqual(table_headers[x].text, header_list[x])
-    """
+
     def test_table_content(self):
         driver = self.driver
-        # locators, waits, actions here
-        self.assertEqual(1, 1)
+        table_content = driver.find_elements(by=By.TAG_NAME, value="td")
+        for x in range(0, 6):
+            self.assertEqual(table_content[x].text, content_list[x])
     """
     def test_canvas_element(self):
         driver = self.driver
@@ -61,7 +64,7 @@ class TestName(unittest.TestCase):
     """
     def tearDown(self):
         self.driver.quit()
-
+    
 
 if __name__ == '__main__':
     unittest.main()
