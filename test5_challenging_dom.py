@@ -20,12 +20,12 @@ class TestName(unittest.TestCase):
         driver.maximize_window()
         driver.find_element(by=By.XPATH, value="//a[normalize-space()='Challenging DOM']").click()
         WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h3"))) 
-    """
+
     def test_title_text(self):
         driver = self.driver
         self.assertEqual(driver.find_element(by=By.TAG_NAME, value="h3").text, title)
         self.assertEqual(driver.find_element(by=By.TAG_NAME, value="p").text, text)
-    """
+
     def test_side_buttons(self):
         driver = self.driver
         # self.assertIn(driver.find_element(by=By.CLASS_NAME, value="button").text, button_list)
