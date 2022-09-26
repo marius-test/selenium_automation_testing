@@ -56,12 +56,11 @@ class TestName(unittest.TestCase):
         table_content = driver.find_elements(by=By.TAG_NAME, value="td")
         for x in range(0, 6):
             self.assertEqual(table_content[x].text, content_list[x])
-    """
+
     def test_canvas_element(self):
         driver = self.driver
-        # locators, waits, actions here
-        self.assertEqual(1, 1)
-    """
+        canvas = driver.find_element(by=By.ID, value="canvas")
+        
     def tearDown(self):
         self.driver.quit()
     
