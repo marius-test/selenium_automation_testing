@@ -28,18 +28,20 @@ class TestName(unittest.TestCase):
 
     def test_side_buttons(self):
         driver = self.driver
-        # self.assertIn(driver.find_element(by=By.CLASS_NAME, value="button").text, button_list)
         tag_a_elements = driver.find_elements(by=By.TAG_NAME, value="a")
-        self.assertIn(tag_a_elements[1].text, button_list)
-        self.assertIn(tag_a_elements[2].text, button_list)
-        self.assertIn(tag_a_elements[3].text, button_list)
+        for x in range(1, 4):
+            self.assertIn(tag_a_elements[x].text, button_list)
+        # self.assertIn(driver.find_element(by=By.CLASS_NAME, value="button").text, button_list)
         # self.assertIn(driver.find_element(by=By.CLASS_NAME, value="button alert").text, button_list)
-    """  
+
     def test_table_actions(self):
         driver = self.driver
-        # locators, waits, actions here
-        self.assertEqual(1, 1)
-        
+        for x in range(1, 11):
+            edit_buttons = driver.find_element(by=By.XPATH, value=f"//tbody/tr[{x}]/td[7]/a[1]")
+            delete_buttons = driver.find_element(by=By.XPATH, value=f"//tbody/tr[{x}]/td[7]/a[2]")
+            self.assertEqual(edit_buttons.text, "edit")
+            self.assertEqual(edit_buttons.text, "delete")
+    """
     def test_table_columns(self):
         driver = self.driver
         # locators, waits, actions here
