@@ -13,9 +13,10 @@ text = "The hardest part in automated web testing is finding the best locators (
 button_list = ["foo", "bar", "baz", "qux"]
 header_list = ["Lorem", "Ipsum", "Dolor", "Sit", "Amet", "Diceret", "Action"]
 content_list = ["Iuvaret0", "Apeirian0", "Adipisci0", "Definiebas0", "Consequuntur0", "Phaedrum0"]
+canvas_size = {'height': 202, 'width': 601}
 
 
-class TestName(unittest.TestCase):
+class ChallengingDOM(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome(service=PATH)
         driver = self.driver
@@ -60,6 +61,7 @@ class TestName(unittest.TestCase):
     def test_canvas_element(self):
         driver = self.driver
         canvas = driver.find_element(by=By.ID, value="canvas")
+        self.assertDictEqual(canvas.size , canvas_size)
         
     def tearDown(self):
         self.driver.quit()
