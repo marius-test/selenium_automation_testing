@@ -1,4 +1,3 @@
-import time
 import unittest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -109,6 +108,8 @@ class ChallengingDOM(unittest.TestCase):
         driver = self.driver
         canvas = driver.find_element(by=By.ID, value="canvas")
         self.assertDictEqual(canvas.size , canvas_size)
+        # to be added
+        # save the canvas as .png, use OCR to verify if the word "Answer:" is displayed
         
     def tearDown(self):
         self.driver.quit()
