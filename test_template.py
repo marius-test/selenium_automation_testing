@@ -1,3 +1,4 @@
+# delete unused imports
 import time
 import unittest
 import urllib3
@@ -14,9 +15,9 @@ from selenium.webdriver.common.alert import Alert
 
 PATH = Service("C:\\Users\\mariu\\chromedriver.exe")
 url = "https://the-internet.herokuapp.com/"
-driver = webdriver.Chrome(service=PATH)
-action_chains = ActionChains(driver)
-alert = Alert(driver)
+# driver = webdriver.Chrome(service=PATH)
+# action_chains = ActionChains(driver)
+# alert = Alert(driver)
 # test data here
 
 
