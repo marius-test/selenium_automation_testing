@@ -32,7 +32,7 @@ class AddRemoveElement(unittest.TestCase):
         driver.find_element(by=By.CSS_SELECTOR, value=".added-manually").click()
         self.assertTrue(WebDriverWait(driver, 5).until(EC.invisibility_of_element_located((By.CSS_SELECTOR, ".added-manually"))))
         # self.assertFalse(driver.find_element(by=By.CSS_SELECTOR, value=".added-manually").is_displayed())
-        
+
     def tearDown(self):
         self.driver.quit()
 

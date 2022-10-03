@@ -38,7 +38,11 @@ class ContextMenu(unittest.TestCase):
         self.assertEqual(driver.find_element(by=By.TAG_NAME, value="h3").text, title)
         self.assertEqual(paragraph[0].text, text1)
         self.assertEqual(paragraph[1].text, text2)
-    
+        
+    def test_properties(self):
+        driver = self.driver
+        driver.find_element(by=By.ID, value="hot-spot")
+        
     def tearDown(self):
         self.driver.quit()
 
