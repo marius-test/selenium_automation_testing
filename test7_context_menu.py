@@ -31,7 +31,7 @@ class ContextMenu(unittest.TestCase):
         driver.maximize_window()
         WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
         driver.find_element(by=By.XPATH, value="//a[normalize-space()='Context Menu']").click()
-    
+
     def test_title_text(self):
         driver = self.driver
         paragraph = driver.find_elements(by=By.TAG_NAME, value="p")
@@ -39,9 +39,10 @@ class ContextMenu(unittest.TestCase):
         self.assertEqual(paragraph[0].text, text1)
         self.assertEqual(paragraph[1].text, text2)
         
-    def test_properties(self):
+    def test_box_properties(self):
         driver = self.driver
-        driver.find_element(by=By.ID, value="hot-spot")
+        style = driver.find_element(by=By.ID, value="hot-spot").get_attribute("style")
+        self.assertEqual(style, "border-style: dashed; border-width: 5px; width: 250px; height: 150px;")
         
     def tearDown(self):
         self.driver.quit()
