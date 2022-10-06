@@ -12,12 +12,10 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.alert import Alert
+from selenium.common.exceptions import TimeoutException
 
 PATH = Service("C:\\Users\\mariu\\chromedriver.exe")
 url = "https://the-internet.herokuapp.com/"
-# driver = webdriver.Chrome(service=PATH)
-# action_chains = ActionChains(driver)
-# alert = Alert(driver)
 title = "Context Menu"
 text1 = "Context menu items are custom additions that appear in the right-click menu."
 text2 = "Right-click in the box below to see one called 'the-internet'. When you click it, it will trigger a JavaScript alert."
@@ -31,7 +29,7 @@ class ContextMenu(unittest.TestCase):
         driver.maximize_window()
         WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
         driver.find_element(by=By.XPATH, value="//a[normalize-space()='Context Menu']").click()
-
+    """
     def test_title_text(self):
         driver = self.driver
         paragraph = driver.find_elements(by=By.TAG_NAME, value="p")
@@ -43,9 +41,28 @@ class ContextMenu(unittest.TestCase):
         driver = self.driver
         style = driver.find_element(by=By.ID, value="hot-spot").get_attribute("style")
         self.assertEqual(style, "border-style: dashed; border-width: 5px; width: 250px; height: 150px;")
+    """
+    def test_alert_box_present(self):
+        driver = self.driver
+        action = ActionChains(driver)
+        box = driver.find_element(by=By.ID, value="hot-spot")
+        action.context_click(box).perform()
+        # self.assert
+
+    def test_alert_box_closed(self):
+        driver = self.driver
+        alert = Alert(driver)
+        action = ActionChains(driver)
+        box = driver.find_element(by=By.ID, value="hot-spot")
+        action.context_click(box).perform()
+        # self.assert
+        driver.switch_to.alert
+        alert.accept()
+        # self.assert
         
     def tearDown(self):
-        self.driver.quit()
+        pass
+        # self.driver.quit()
 
 
 if __name__ == '__main__':
