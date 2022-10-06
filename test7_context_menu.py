@@ -44,10 +44,11 @@ class ContextMenu(unittest.TestCase):
     """
     def test_alert_box_present(self):
         driver = self.driver
+        alert = Alert(driver)
         action = ActionChains(driver)
         box = driver.find_element(by=By.ID, value="hot-spot")
         action.context_click(box).perform()
-        # self.assert
+        self.assertTrue()
 
     def test_alert_box_closed(self):
         driver = self.driver
@@ -55,11 +56,11 @@ class ContextMenu(unittest.TestCase):
         action = ActionChains(driver)
         box = driver.find_element(by=By.ID, value="hot-spot")
         action.context_click(box).perform()
-        # self.assert
+        self.assertTrue()
         driver.switch_to.alert
         alert.accept()
-        # self.assert
-        
+        self.assertTrue()
+
     def tearDown(self):
         pass
         # self.driver.quit()
