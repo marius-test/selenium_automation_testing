@@ -8,4 +8,3 @@ if __name__ == '__main__':
     os.system('python test4_broken_images.py')
     os.system('python test5_challenging_dom.py')
     os.system('python test6_checkboxes.py')
-    

@@ -21,7 +21,7 @@ class ABTesting(unittest.TestCase):
     def test_title_is_correct(self):
         driver = self.driver
         driver.find_element(by=By.CSS_SELECTOR, value="a[href='/abtest']").click()
-        ebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h3")))
+        WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h3")))
         self.assertIn(driver.find_element(by=By.TAG_NAME, value="h3").text, title)
                          
     def test_text_is_correct(self):
