@@ -9,12 +9,14 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.alert import Alert
+from selenium.common.exceptions import TimeoutException
 
 PATH = Service("C:\\Users\\mariu\\chromedriver.exe")
 url = "https://the-internet.herokuapp.com/"
 title = "Context Menu"
 text1 = "Context menu items are custom additions that appear in the right-click menu."
 text2 = "Right-click in the box below to see one called 'the-internet'. When you click it, it will trigger a JavaScript alert."
+alert_text = "You selected a context menu"
 
 
 class ContextMenu(unittest.TestCase):
@@ -38,12 +40,13 @@ class ContextMenu(unittest.TestCase):
         style = driver.find_element(by=By.ID, value="hot-spot").get_attribute("style")
         self.assertEqual(style, "border-style: dashed; border-width: 5px; width: 250px; height: 150px;")
 
-    def test_alert_box_present(self):
+    def test_alert_box_open(self):
         driver = self.driver
         alert = Alert(driver)
         action = ActionChains(driver)
         box = driver.find_element(by=By.ID, value="hot-spot")
         action.context_click(box).perform()
+        self.assertEqual(alert.text, alert_text)
 
     def test_alert_box_closed(self):
         driver = self.driver
@@ -51,8 +54,16 @@ class ContextMenu(unittest.TestCase):
         action = ActionChains(driver)
         box = driver.find_element(by=By.ID, value="hot-spot")
         action.context_click(box).perform()
-        driver.switch_to.alert
+        self.assertEqual(alert.text, alert_text)
         alert.accept()
+        try:
+            WebDriverWait(driver, 2).until(EC.alert_is_present())
+        except TimeoutException:
+            alert_is_present = False
+        else:
+            alert_is_present = True
+        finally:
+            self.assertTrue(alert_is_present == False)
 
     def tearDown(self):
         self.driver.quit()
