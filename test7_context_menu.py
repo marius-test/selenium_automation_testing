@@ -59,11 +59,11 @@ class ContextMenu(unittest.TestCase):
         try:
             WebDriverWait(driver, 2).until(EC.alert_is_present())
         except TimeoutException:
-            alert_is_present = False
+            alert_is_present = 'No'
         else:
-            alert_is_present = True
+            alert_is_present = 'Yes'
         finally:
-            self.assertTrue(alert_is_present == False)
+            self.assertTrue(alert_is_present == 'No')
 
     def tearDown(self):
         self.driver.quit()
