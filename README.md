@@ -1,4 +1,4 @@
-# automating_the_internet
+# automating_the-internet
 
 The goal of this project is to fully write automated test cases for the following website <https://the-internet.herokuapp.com/>.
 
