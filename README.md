@@ -1,8 +1,8 @@
 # automating_the_internet
 
-The goal is to fully write automated test cases for the following website https://the-internet.herokuapp.com/.
+The goal of this project is to fully write automated test cases for the following website <https://the-internet.herokuapp.com/>.
 
-The website has 44 pages with most of the functionalities found on a modern website.
+This website has 44 pages with most of the functionalities found on a modern website.
 
 The technology stack used for this project is the following:
 
