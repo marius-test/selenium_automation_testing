@@ -1,18 +1,16 @@
 {
-    "cSpell.ignoreWords": [
-        "abtest",
-        "chromedriver",
-        "mariu"
-    ],
     "cSpell.words": [
+        "abtest",
         "Adipisci",
         "Amet",
         "Apeirian",
+        "chromedriver",
         "Consequuntur",
         "Definiebas",
         "Diceret",
         "geckodriver",
         "Iuvaret",
+        "mariu",
         "mpmath",
         "Phaedrum",
         "pyautogui",
