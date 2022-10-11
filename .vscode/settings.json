@@ -15,6 +15,7 @@
         "Iuvaret",
         "mpmath",
         "Phaedrum",
+        "pyautogui",
         "pynput"
     ]
 }

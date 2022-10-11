@@ -3,6 +3,7 @@ import time
 import unittest
 import urllib3
 import requests
+import pyautogui
 from pynput.keyboard import Key, Controller
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
