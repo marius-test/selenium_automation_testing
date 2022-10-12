@@ -13,10 +13,16 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from webdriver_manager.chrome import ChromeDriverManager
 
 PATH = Service("C:\\Users\\mariu\\chromedriver.exe")
-url = "https://the-internet.herokuapp.com/"
+# s = Service(ChromeDriverManager().install())
+
 # driver = webdriver.Chrome(service=PATH)
+# driver = webdriver.Chrome(service=s)
+
+url = "https://the-internet.herokuapp.com/"
+
 # action_chains = ActionChains(driver)
 # alert = Alert(driver)
 # test data here

@@ -5,6 +5,7 @@ from pynput.keyboard import Key, Controller
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 PATH = Service("C:\\Users\\mariu\\chromedriver.exe")
@@ -21,6 +22,7 @@ class DigestAuth(unittest.TestCase):
         driver = self.driver
         driver.get(url)
         driver.maximize_window()
+        WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
 
     def test_login_url_successful(self):
         driver = self.driver

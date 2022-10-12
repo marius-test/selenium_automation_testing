@@ -1,4 +1,3 @@
-# delete unused imports
 import time
 import unittest
 import urllib3
@@ -13,40 +12,26 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from webdriver_manager.chrome import ChromeDriverManager
 
 PATH = Service("C:\\Users\\mariu\\chromedriver.exe")
-# s = Service(ChromeDriverManager().install())
-
-# driver = webdriver.Chrome(service=PATH)
-# driver = webdriver.Chrome(service=s)
-
 url = "https://the-internet.herokuapp.com/"
 
-# action_chains = ActionChains(driver)
-# alert = Alert(driver)
-# test data here
 
-
-class TestName(unittest.TestCase):
+class DisappearingElements(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome(service=PATH)
         driver = self.driver
         driver.get(url)
         driver.maximize_window()
+        WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
+        driver.find_element(by=By.XPATH, value="/html/body/div[2]/div/ul/li[9]/a").click()
     
-    def test_x(self):
+    def test_1(self):
         driver = self.driver
-        # locators, waits, actions here
-        self.assertEqual(1, 1)
-    
-    def test_y(self):
-        driver = self.driver
-        # locators, waits, actions here
-        self.assertEqual(1, 1)
     
     def tearDown(self):
-        self.driver.quit()
+        pass
+        # self.driver.quit()
 
 
 if __name__ == '__main__':
