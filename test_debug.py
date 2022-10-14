@@ -1,5 +1,4 @@
 # delete unused imports
-import time
 import unittest
 import urllib3
 import requests
