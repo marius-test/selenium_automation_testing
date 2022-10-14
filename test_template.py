@@ -4,6 +4,7 @@ import unittest
 import urllib3
 import requests
 import pyautogui
+from time import sleep
 from pynput.keyboard import Key, Controller
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -14,6 +15,7 @@ from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.common.exceptions import TimeoutException
 
 PATH = Service("C:\\Users\\mariu\\chromedriver.exe")
 # s = Service(ChromeDriverManager().install())
