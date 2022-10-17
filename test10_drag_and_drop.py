@@ -1,19 +1,10 @@
 import unittest
-import urllib3
-import requests
-import pyautogui
-from time import sleep
-from pynput.keyboard import Key, Controller
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.common.exceptions import TimeoutException
+from seletools.actions import drag_and_drop
 
 PATH = Service("C:\\Users\\mariu\\chromedriver.exe")
 url = "https://the-internet.herokuapp.com/"
@@ -30,13 +21,22 @@ class DragAndDrop(unittest.TestCase):
     
     def test_drag_A_on_B(self):
         driver = self.driver
-        action = ActionChains(driver)
-        column_a = driver.find_element(by=By.XPATH, value='//*[@id="column-a"]')
-        column_b = driver.find_element(by=By.XPATH, value='//*[@id="column-b"]')
-    
+        source_A = driver.find_element(by=By.ID, value='column-a')
+        target_B = driver.find_element(by=By.ID, value='column-b')
+        drag_and_drop(driver, source_A, target_B)
+        header = driver.find_elements(by=By.TAG_NAME, value="header")
+        self.assertEqual(header[0].text, "B")
+        self.assertEqual(header[1].text, "A")
+         
     def test_drag_B_on_A(self):
         driver = self.driver
-    
+        source_B = driver.find_element(by=By.ID, value='column-b')
+        target_A = driver.find_element(by=By.ID, value='column-a')
+        drag_and_drop(driver, source_B, target_A)
+        header = driver.find_elements(by=By.TAG_NAME, value="header")
+        self.assertEqual(header[0].text, "B")
+        self.assertEqual(header[1].text, "A")
+
     def tearDown(self):
         self.driver.quit()
 
