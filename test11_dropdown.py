@@ -1,20 +1,9 @@
-# delete unused imports
 import unittest
-import urllib3
-import requests
-import pyautogui
-from time import sleep
-from pynput.keyboard import Key, Controller
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.common.exceptions import TimeoutException
 
 
 PATH = Service("C:\\Users\\mariu\\chromedriver.exe")
@@ -43,7 +32,7 @@ class TestDropdown(unittest.TestCase):
         options = driver.find_elements(by=By.TAG_NAME, value="option")
         options[1].click()
         selected = options[1].get_attribute("selected")
-        # self.assertEqual(selected, "true")
+        self.assertEqual(selected, "true")
 
     def test_select_option2(self):
         driver = self.driver
@@ -51,11 +40,10 @@ class TestDropdown(unittest.TestCase):
         options = driver.find_elements(by=By.TAG_NAME, value="option")
         options[2].click()
         selected = options[2].get_attribute("selected")
-        # self.assertEqual(selected, "true")
+        self.assertEqual(selected, "true")
         
     def tearDown(self):
-        pass
-        # self.driver.quit()
+        self.driver.quit()
 
 
 if __name__ == '__main__':
