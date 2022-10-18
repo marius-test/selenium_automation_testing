@@ -19,6 +19,7 @@ from selenium.common.exceptions import TimeoutException
 
 PATH = Service("C:\\Users\\mariu\\chromedriver.exe")
 url = "https://the-internet.herokuapp.com/"
+expected_unselectable_text = "Please select an option"
 
 
 class TestDropdown(unittest.TestCase):
@@ -29,18 +30,32 @@ class TestDropdown(unittest.TestCase):
         driver.maximize_window()
         WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
         driver.find_element(by=By.XPATH, value="/html/body/div[2]/div/ul/li[11]/a").click()
-        
+   
+    def test_unselectable(self):
+        driver = self.driver
+        driver.find_element(by=By.ID, value="dropdown").click()
+        options = driver.find_elements(by=By.TAG_NAME, value="option")
+        self.assertAlmostEqual(options[0].text, expected_unselectable_text)
+     
     def test_select_option1(self):
         driver = self.driver
-
-
+        driver.find_element(by=By.ID, value="dropdown").click()
+        options = driver.find_elements(by=By.TAG_NAME, value="option")
+        options[1].click()
+        selected = options[1].get_attribute("selected")
+        # self.assertEqual(selected, "true")
 
     def test_select_option2(self):
         driver = self.driver
-
-    
+        driver.find_element(by=By.ID, value="dropdown").click()
+        options = driver.find_elements(by=By.TAG_NAME, value="option")
+        options[2].click()
+        selected = options[2].get_attribute("selected")
+        # self.assertEqual(selected, "true")
+        
     def tearDown(self):
-        self.driver.quit()
+        pass
+        # self.driver.quit()
 
 
 if __name__ == '__main__':
