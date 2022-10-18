@@ -6,6 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from seletools.actions import drag_and_drop
 
+
 PATH = Service("C:\\Users\\mariu\\chromedriver.exe")
 url = "https://the-internet.herokuapp.com/"
 

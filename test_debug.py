@@ -4,6 +4,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from seletools.actions import drag_and_drop
 
+
 s = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=s)
 driver.get("http://the-internet.herokuapp.com/drag_and_drop")

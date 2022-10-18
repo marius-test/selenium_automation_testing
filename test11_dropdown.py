@@ -18,34 +18,26 @@ from selenium.common.exceptions import TimeoutException
 
 
 PATH = Service("C:\\Users\\mariu\\chromedriver.exe")
-# s = Service(ChromeDriverManager().install())
-
-# driver = webdriver.Chrome(service=PATH)
-# driver = webdriver.Chrome(service=s)
-
 url = "https://the-internet.herokuapp.com/"
 
-# action_chains = ActionChains(driver)
-# alert = Alert(driver)
-# test data here
 
-
-class TestName(unittest.TestCase):
+class TestDropdown(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome(service=PATH)
         driver = self.driver
         driver.get(url)
         driver.maximize_window()
-    
-    def test_x(self):
+        WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
+        driver.find_element(by=By.XPATH, value="/html/body/div[2]/div/ul/li[11]/a").click()
+        
+    def test_select_option1(self):
         driver = self.driver
-        # locators, waits, actions here
-        self.assertEqual(1, 1)
-    
-    def test_y(self):
+
+
+
+    def test_select_option2(self):
         driver = self.driver
-        # locators, waits, actions here
-        self.assertEqual(1, 1)
+
     
     def tearDown(self):
         self.driver.quit()
