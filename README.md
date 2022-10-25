@@ -17,3 +17,5 @@ The technology stack used for this project is the following:
 - more than 5 years of software testing experience as a QA Engineer
 
 By completing this project, I aim to understand the basics of **Automation Testing**.
+
+# This project is in progress...
