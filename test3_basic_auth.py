@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from pynput.keyboard import Key, Controller
 
 
-PATH = Service("C:\\Users\mariu\\chromedriver.exe")
+PATH = Service("C:\\Users\marius\\chromedriver.exe")
 url = "https://the-internet.herokuapp.com/"
 username = password = "admin"
 title = "Basic Auth"

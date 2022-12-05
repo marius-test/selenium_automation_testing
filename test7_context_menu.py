@@ -9,7 +9,7 @@ from selenium.webdriver.common.alert import Alert
 from selenium.common.exceptions import TimeoutException
 
 
-PATH = Service("C:\\Users\\mariu\\chromedriver.exe")
+PATH = Service("C:\\Users\\marius\\chromedriver.exe")
 url = "https://the-internet.herokuapp.com/"
 title = "Context Menu"
 text1 = "Context menu items are custom additions that appear in the right-click menu."

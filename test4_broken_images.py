@@ -8,7 +8,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-PATH = Service("C:\\Users\\mariu\\chromedriver.exe")
+PATH = Service("C:\\Users\\marius\\chromedriver.exe")
 url = "https://the-internet.herokuapp.com/"
 
 

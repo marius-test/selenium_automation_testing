@@ -17,7 +17,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.common.exceptions import TimeoutException
 
 
-PATH = Service("C:\\Users\\mariu\\chromedriver.exe")
+PATH = Service("C:\\Users\\marius\\chromedriver.exe")
 # s = Service(ChromeDriverManager().install())
 
 # driver = webdriver.Chrome(service=PATH)

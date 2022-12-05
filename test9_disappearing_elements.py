@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 
 
-PATH = Service("C:\\Users\\mariu\\chromedriver.exe")
+PATH = Service("C:\\Users\\marius\\chromedriver.exe")
 url = "https://the-internet.herokuapp.com/"
 header = "Disappearing Elements"
 paragraph = "This example demonstrates when elements on a page change by disappearing/reappearing on each page load."
