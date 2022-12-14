@@ -1,19 +1,22 @@
 import unittest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-PATH = Service("C:\\Users\\marius\\chromedriver.exe")
+# PATH = Service("C:\\Users\\marius\\chromedriver.exe")
+s = Service(ChromeDriverManager().install())
 url = "https://the-internet.herokuapp.com/"
+
 expected_unselectable_text = "Please select an option"
 
 
 class TestDropdown(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome(service=PATH)
+        self.driver = webdriver.Chrome(service=s)
         driver = self.driver
         driver.get(url)
         driver.maximize_window()

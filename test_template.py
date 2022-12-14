@@ -1,4 +1,4 @@
-# delete unused imports
+# imports
 import unittest
 import urllib3
 import requests
@@ -7,44 +7,43 @@ from time import sleep
 from pynput.keyboard import Key, Controller
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.common.exceptions import TimeoutException
 
 
-PATH = Service("C:\\Users\\marius\\chromedriver.exe")
-# s = Service(ChromeDriverManager().install())
+# PATH = Service("C:\\Users\\marius\\chromedriver.exe")
+s = Service(ChromeDriverManager().install())
 
-# driver = webdriver.Chrome(service=PATH)
-# driver = webdriver.Chrome(service=s)
-
+# url
 url = "https://the-internet.herokuapp.com/"
 
 # action_chains = ActionChains(driver)
 # alert = Alert(driver)
-# test data here
+
+# test data
 
 
 class TestName(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome(service=PATH)
+        self.driver = webdriver.Chrome(service=s)
         driver = self.driver
         driver.get(url)
         driver.maximize_window()
     
     def test_x(self):
         driver = self.driver
-        # locators, waits, actions here
+        # locators, waits, actions
         self.assertEqual(1, 1)
     
     def test_y(self):
         driver = self.driver
-        # locators, waits, actions here
+        # locators, waits, actions
         self.assertEqual(1, 1)
     
     def tearDown(self):

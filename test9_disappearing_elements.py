@@ -2,14 +2,17 @@ import unittest
 import requests
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 
 
-PATH = Service("C:\\Users\\marius\\chromedriver.exe")
+# PATH = Service("C:\\Users\\marius\\chromedriver.exe")
+s = Service(ChromeDriverManager().install())
 url = "https://the-internet.herokuapp.com/"
+
 header = "Disappearing Elements"
 paragraph = "This example demonstrates when elements on a page change by disappearing/reappearing on each page load."
 expected_buttons = ["Home", "About", "Contact Us", "Portfolio", "Gallery"]
@@ -21,7 +24,7 @@ expected_response = ["<Response [200]>", "<Response [404]>", "<Response [404]>",
 
 class DisappearingElements(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome(service=PATH)
+        self.driver = webdriver.Chrome(service=s)
         driver = self.driver
         driver.get(url)
         driver.maximize_window()
