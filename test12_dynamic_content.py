@@ -1,4 +1,3 @@
-# delete unused imports
 import unittest
 import urllib3
 import requests
@@ -25,7 +24,7 @@ url = "https://the-internet.herokuapp.com/"
 # action_chains = ActionChains(driver)
 # alert = Alert(driver)
 
-# test data here
+expected_title = 'Dynamic Content'
 
 
 class TestName(unittest.TestCase):
@@ -34,10 +33,10 @@ class TestName(unittest.TestCase):
         driver = self.driver
         driver.get(url)
         driver.maximize_window()
+        WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h3")))
     
     def test_x(self):
         driver = self.driver
-        # locators, waits, actions here
         self.assertEqual(1, 1)
     
     def test_y(self):
