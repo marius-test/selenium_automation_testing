@@ -13,6 +13,8 @@ from selenium.webdriver.support import expected_conditions as EC
 # PATH = Service("C:\\Users\\marius\\chromedriver.exe")
 s = Service(ChromeDriverManager().install())
 url = "https://the-internet.herokuapp.com/"
+
+# Test data
 username = password = "admin"
 title = "Digest Auth"
 text = "Congratulations! You must have the proper credentials."

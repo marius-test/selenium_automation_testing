@@ -15,3 +15,4 @@ if __name__ == '__main__':
     os.system('test10_drag_and_drop.py')
     os.system('test11_dropdown.py')
     # os.system('test12_dynamic_content.py')
+    

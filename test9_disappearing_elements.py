@@ -13,6 +13,7 @@ from selenium.common.exceptions import TimeoutException
 s = Service(ChromeDriverManager().install())
 url = "https://the-internet.herokuapp.com/"
 
+# Test data
 header = "Disappearing Elements"
 paragraph = "This example demonstrates when elements on a page change by disappearing/reappearing on each page load."
 expected_buttons = ["Home", "About", "Contact Us", "Portfolio", "Gallery"]

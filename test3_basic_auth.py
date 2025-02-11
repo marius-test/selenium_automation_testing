@@ -13,6 +13,7 @@ from pynput.keyboard import Key, Controller
 s = Service(ChromeDriverManager().install())
 url = "https://the-internet.herokuapp.com/"
 
+# Test data
 username = password = "admin"
 title = "Basic Auth"
 text = "Congratulations! You must have the proper credentials."

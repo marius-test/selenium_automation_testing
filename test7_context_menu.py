@@ -13,6 +13,8 @@ from selenium.common.exceptions import TimeoutException
 # PATH = Service("C:\\Users\\marius\\chromedriver.exe")
 s = Service(ChromeDriverManager().install())
 url = "https://the-internet.herokuapp.com/"
+
+# Test data
 title = "Context Menu"
 text1 = "Context menu items are custom additions that appear in the right-click menu."
 text2 = "Right-click in the box below to see one called 'the-internet'. When you click it, it will trigger a JavaScript alert."
