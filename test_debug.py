@@ -1,10 +1,10 @@
-import unittest
-import urllib3
-import requests
-import pyautogui
-import seletools
+# import unittest
+# import urllib3
+# import requests
+# import pyautogui
+# import seletools
 import time
-from pynput.keyboard import Key, Controller
+# from pynput.keyboard import Key, Controller
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -14,11 +14,13 @@ from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
-from webdriver_manager.chrome import ChromeDriverManager
+# from webdriver_manager.chrome import ChromeDriverManager
 
 
-chrome_service = Service(ChromeDriverManager().install())
-driver = webdriver.Chrome(service=chrome_service)
+
+PATH = Service("C:\\Users\\marius\\chromedriver.exe")
+# chrome_service = Service(ChromeDriverManager().install())
+driver = webdriver.Chrome(service=PATH)
 url = "https://the-internet.herokuapp.com/"
 
 
@@ -28,7 +30,15 @@ def test_debug():
     WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
     driver.find_element(By.XPATH, "/html/body/div[2]/div/ul/li[12]/a").click()
     driver.find_element(By.XPATH, "/html/body/div[2]/div/div/p[2]/a").click()
-    time.sleep(120)
+    WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h3")))
+    image_1 = driver.find_element(By.XPATH, '//*[@id="content"]/div[1]/div[1]/img')
+    image_2 = driver.find_element(By.XPATH, '//*[@id="content"]/div[2]/div[1]/img')
+    image_1_src = image_1.get_attribute('src')
+    image_2_src = image_2.get_attribute('src')
+    print(image_1_src)
+    print(image_2_src)
+    time.sleep(5)
+    driver.quit()
 
 
 if __name__ == '__main__':
