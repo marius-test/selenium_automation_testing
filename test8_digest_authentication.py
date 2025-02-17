@@ -11,7 +11,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 # PATH = Service("C:\\Users\\marius\\chromedriver.exe")
-s = Service(ChromeDriverManager().install())
+chrome_service = Service(ChromeDriverManager().install())
 url = "https://the-internet.herokuapp.com/"
 
 # Test data
@@ -23,35 +23,31 @@ expected_response = "<Response [401]>"
 
 class DigestAuth(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome(service=s)
-        driver = self.driver
-        driver.get(url)
-        driver.maximize_window()
-        WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
+        self.driver = webdriver.Chrome(service=chrome_service)
+        self.driver.get(url)
+        self.driver.maximize_window()
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
 
     def test_login_url_successful(self):
-        driver = self.driver
         login_url = f"https://{username}:{password}@the-internet.herokuapp.com/digest_auth"
-        driver.get(login_url)
-        self.assertEqual(title, driver.find_element(by=By.TAG_NAME, value="h3").text)
-        self.assertEqual(text, driver.find_element(by=By.TAG_NAME, value="p").text)
+        self.driver.get(login_url)
+        self.assertEqual(title, self.driver.find_element(by=By.TAG_NAME, value="h3").text)
+        self.assertEqual(text, self.driver.find_element(by=By.TAG_NAME, value="p").text)
 
     def test_login_credentials_successful(self):
-        driver = self.driver
-        driver.find_element(by=By.XPATH, value="/html/body/div[2]/div/ul/li[8]/a").click()
+        self.driver.find_element(by=By.XPATH, value="/html/body/div[2]/div/ul/li[8]/a").click()
         pyautogui.write(username)
         pyautogui.press('tab')
         pyautogui.write(password)
         pyautogui.press('enter')
-        self.assertEqual(title, driver.find_element(by=By.TAG_NAME, value="h3").text)
-        self.assertEqual(text, driver.find_element(by=By.TAG_NAME, value="p").text)
+        self.assertEqual(title, self.driver.find_element(by=By.TAG_NAME, value="h3").text)
+        self.assertEqual(text, self.driver.find_element(by=By.TAG_NAME, value="p").text)
 
     def test_login_failed(self):
-        driver = self.driver
-        driver.find_element(by=By.XPATH, value="/html/body/div[2]/div/ul/li[8]/a").click()
+        self.driver.find_element(by=By.XPATH, value="/html/body/div[2]/div/ul/li[8]/a").click()
         Controller().press(Key.esc)
         Controller().release(Key.esc)
-        response = requests.get(driver.current_url, stream=True)
+        response = requests.get(self.driver.current_url, stream=True)
         self.assertEqual(str(response), expected_response)
 
     def tearDown(self):

@@ -1,4 +1,3 @@
-import time
 import unittest
 import requests
 from selenium import webdriver
@@ -10,22 +9,20 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 # PATH = Service("C:\\Users\\marius\\chromedriver.exe")
-s = Service(ChromeDriverManager().install())
+chrome_service = Service(ChromeDriverManager().install())
 url = "https://the-internet.herokuapp.com/"
 
 
 class TestBrokenImages(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome(service=s)
-        driver = self.driver
-        driver.get(url)
-        driver.maximize_window()
+        self.driver = webdriver.Chrome(service=chrome_service)
+        self.driver.get(url)
+        self.driver.maximize_window()
     
     def test_broken_images(self):
-        driver = self.driver
-        driver.find_element(by=By.CSS_SELECTOR, value="a[href='/broken_images']").click()
-        WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h3")))
-        image_list = driver.find_elements(by=By.TAG_NAME, value="img")
+        self.driver.find_element(By.CSS_SELECTOR, "a[href='/broken_images']").click()
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h3")))
+        image_list = self.driver.find_elements(By.TAG_NAME, "img")
         broken_images = 0
         for image in image_list:
             response = requests.get(image.get_attribute('src'), stream=True)

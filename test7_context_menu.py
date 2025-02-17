@@ -11,7 +11,7 @@ from selenium.common.exceptions import TimeoutException
 
 
 # PATH = Service("C:\\Users\\marius\\chromedriver.exe")
-s = Service(ChromeDriverManager().install())
+chrome_service = Service(ChromeDriverManager().install())
 url = "https://the-internet.herokuapp.com/"
 
 # Test data
@@ -23,43 +23,38 @@ alert_text = "You selected a context menu"
 
 class ContextMenu(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome(service=s)
-        driver = self.driver
-        driver.get(url)
-        driver.maximize_window()
-        WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
-        driver.find_element(by=By.XPATH, value="//a[normalize-space()='Context Menu']").click()
+        self.driver = webdriver.Chrome(service=chrome_service)
+        self.driver.get(url)
+        self.driver.maximize_window()
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
+        self.driver.find_element(By.XPATH, "//a[normalize-space()='Context Menu']").click()
 
     def test_title_text(self):
-        driver = self.driver
-        paragraph = driver.find_elements(by=By.TAG_NAME, value="p")
-        self.assertEqual(driver.find_element(by=By.TAG_NAME, value="h3").text, title)
+        paragraph = self.driver.find_elements(By.TAG_NAME, "p")
+        self.assertEqual(self.driver.find_element(By.TAG_NAME, "h3").text, title)
         self.assertEqual(paragraph[0].text, text1)
         self.assertEqual(paragraph[1].text, text2)
         
     def test_box_properties(self):
-        driver = self.driver
-        style = driver.find_element(by=By.ID, value="hot-spot").get_attribute("style")
+        style = self.driver.find_element(By.ID, "hot-spot").get_attribute("style")
         self.assertEqual(style, "border-style: dashed; border-width: 5px; width: 250px; height: 150px;")
 
     def test_alert_box_open(self):
-        driver = self.driver
-        alert = Alert(driver)
-        action = ActionChains(driver)
-        box = driver.find_element(by=By.ID, value="hot-spot")
+        alert = Alert(self.driver)
+        action = ActionChains(self.driver)
+        box = self.driver.find_element(By.ID, "hot-spot")
         action.context_click(box).perform()
         self.assertEqual(alert.text, alert_text)
 
     def test_alert_box_closed(self):
-        driver = self.driver
-        alert = Alert(driver)
-        action = ActionChains(driver)
-        box = driver.find_element(by=By.ID, value="hot-spot")
+        alert = Alert(self.driver)
+        action = ActionChains(self.driver)
+        box = self.driver.find_element(By.ID, "hot-spot")
         action.context_click(box).perform()
         self.assertEqual(alert.text, alert_text)
         alert.accept()
         try:
-            WebDriverWait(driver, 2).until(EC.alert_is_present())
+            WebDriverWait(self.driver, 2).until(EC.alert_is_present())
         except TimeoutException:
             alert_is_present = 'No'
         else:

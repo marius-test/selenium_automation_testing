@@ -1,4 +1,3 @@
-# imports
 import unittest
 import urllib3
 import requests
@@ -18,7 +17,7 @@ from selenium.common.exceptions import TimeoutException
 
 
 # PATH = Service("C:\\Users\\marius\\chromedriver.exe")
-s = Service(ChromeDriverManager().install())
+chrome_service = Service(ChromeDriverManager().install())
 
 # url
 url = "https://the-internet.herokuapp.com/"
@@ -31,18 +30,15 @@ url = "https://the-internet.herokuapp.com/"
 
 class TestName(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome(service=s)
-        driver = self.driver
-        driver.get(url)
-        driver.maximize_window()
+        self.driver = webdriver.Chrome(service=chrome_service)
+        self.driver.get(url)
+        self.driver.maximize_window()
     
     def test_x(self):
-        driver = self.driver
         # locators, waits, actions
         self.assertEqual(1, 1)
     
     def test_y(self):
-        driver = self.driver
         # locators, waits, actions
         self.assertEqual(1, 1)
     

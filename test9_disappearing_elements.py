@@ -10,7 +10,7 @@ from selenium.common.exceptions import TimeoutException
 
 
 # PATH = Service("C:\\Users\\marius\\chromedriver.exe")
-s = Service(ChromeDriverManager().install())
+chrome_service = Service(ChromeDriverManager().install())
 url = "https://the-internet.herokuapp.com/"
 
 # Test data
@@ -25,40 +25,35 @@ expected_response = ["<Response [200]>", "<Response [404]>", "<Response [404]>",
 
 class DisappearingElements(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome(service=s)
-        driver = self.driver
-        driver.get(url)
-        driver.maximize_window()
-        WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
-        driver.find_element(by=By.XPATH, value="/html/body/div[2]/div/ul/li[9]/a").click()
+        self.driver = webdriver.Chrome(service=chrome_service)
+        self.driver.get(url)
+        self.driver.maximize_window()
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
+        self.driver.find_element(By.XPATH, "/html/body/div[2]/div/ul/li[9]/a").click()
 
     def test_header_and_paragraph(self):
-        driver = self.driver
-        self.assertEqual(driver.find_element(by=By.TAG_NAME, value="h3").text, header)
-        self.assertEqual(driver.find_element(by=By.TAG_NAME, value="p").text, paragraph)
+        self.assertEqual(self.driver.find_element(By.TAG_NAME, "h3").text, header)
+        self.assertEqual(self.driver.find_element(By.TAG_NAME, "p").text, paragraph)
     
     def test_buttons_text(self):
-        driver = self.driver
-        list_of_buttons = driver.find_elements(by=By.TAG_NAME, value="li")
+        list_of_buttons = self.driver.find_elements(By.TAG_NAME, "li")
         i = 0
         for button in list_of_buttons:
             self.assertEqual(list_of_buttons[i].text, expected_buttons[i])
             i += 1
 
     def test_buttons_redirect(self):
-        driver = self.driver
-        list_of_buttons = driver.find_elements(by=By.TAG_NAME, value="a")
+        list_of_buttons = self.driver.find_elements(By.TAG_NAME, "a")
         for i in range(0, 4):
             self.assertEqual(list_of_buttons[i + 1].get_attribute("href"), f"https://the-internet.herokuapp.com/{x[i]}")
             list_of_buttons[i + 1].click()
-            response = requests.get(driver.current_url, stream=True)
+            response = requests.get(self.driver.current_url, stream=True)
             self.assertEqual(str(response), expected_response[i])
-            driver.back()
+            self.driver.back()
       
     def test_missing_button(self):
-        driver = self.driver
         try:
-            WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[2]/div/div/ul/li[5]/a")))
+            WebDriverWait(self.driver, 2).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[2]/div/div/ul/li[5]/a")))
         except TimeoutException:
             button_is_displayed = 'No'
         else:
@@ -67,9 +62,8 @@ class DisappearingElements(unittest.TestCase):
             self.assertTrue(button_is_displayed == 'Yes')
 
     def test_footer(self):
-        driver = self.driver
-        footer = driver.find_element(by=By.XPATH, value="/html/body/div[3]/div/div")
-        link = driver.find_element(by=By.XPATH, value="/html/body/div[3]/div/div/a")
+        footer = self.driver.find_element(By.XPATH, "/html/body/div[3]/div/div")
+        link = self.driver.find_element(By.XPATH, "/html/body/div[3]/div/div/a")
         self.assertEqual(footer.text, expected_footer)
         self.assertEqual(link.get_attribute("href"), expected_footer_link)
 

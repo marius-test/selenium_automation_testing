@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 # PATH = Service("C:\\Users\\marius\\chromedriver.exe")
-s = Service(ChromeDriverManager().install())
+chrome_service = Service(ChromeDriverManager().install())
 url = "https://the-internet.herokuapp.com/"
 
 # Test data
@@ -18,22 +18,19 @@ text = "Also known as split testing. This is a way in which businesses are able 
 
 class ABTesting(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome(service=s)
-        driver = self.driver
-        driver.get(url)
-        driver.maximize_window()
+        self.driver = webdriver.Chrome(service=chrome_service)
+        self.driver.get(url)
+        self.driver.maximize_window()
     
     def test_title_is_correct(self):
-        driver = self.driver
-        driver.find_element(by=By.CSS_SELECTOR, value="a[href='/abtest']").click()
-        WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h3")))
-        self.assertIn(driver.find_element(by=By.TAG_NAME, value="h3").text, title)
+        self.driver.find_element(By.CSS_SELECTOR, "a[href='/abtest']").click()
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h3")))
+        self.assertIn(self.driver.find_element(By.TAG_NAME, "h3").text, title)
                          
     def test_text_is_correct(self):
-        driver = self.driver
-        driver.find_element(by=By.CSS_SELECTOR, value="a[href='/abtest']").click()
-        WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "p")))
-        self.assertEqual(driver.find_element(by=By.TAG_NAME, value="p").text, text)
+        self.driver.find_element(By.CSS_SELECTOR, "a[href='/abtest']").click()
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "p")))
+        self.assertEqual(self.driver.find_element(By.TAG_NAME, "p").text, text)
     
     def tearDown(self):
         self.driver.quit()

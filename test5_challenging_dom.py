@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 # PATH = Service("C:\\Users\\marius\\chromedriver.exe")
-s = Service(ChromeDriverManager().install())
+chrome_service = Service(ChromeDriverManager().install())
 url = "https://the-internet.herokuapp.com/"
 
 # Test data
@@ -31,43 +31,37 @@ canvas_size = {'height': 202, 'width': 601}
 
 class ChallengingDOM(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome(service=s)
-        driver = self.driver
-        driver.get(url)
-        driver.maximize_window()
-        driver.find_element(by=By.XPATH, value="//a[normalize-space()='Challenging DOM']").click()
-        WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h3"))) 
+        self.driver = webdriver.Chrome(service=chrome_service)
+        self.driver.get(url)
+        self.driver.maximize_window()
+        self.driver.find_element(By.XPATH, "//a[normalize-space()='Challenging DOM']").click()
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h3"))) 
 
     def test_title_text(self):
-        driver = self.driver
-        self.assertEqual(driver.find_element(by=By.TAG_NAME, value="h3").text, title)
-        self.assertEqual(driver.find_element(by=By.TAG_NAME, value="p").text, text)
+        self.assertEqual(self.driver.find_element(By.TAG_NAME, "h3").text, title)
+        self.assertEqual(self.driver.find_element(By.TAG_NAME, "p").text, text)
 
     def test_side_buttons(self):
-        driver = self.driver
-        tag_a_elements = driver.find_elements(by=By.TAG_NAME, value="a")
+        tag_a_elements = self.driver.find_elements(By.TAG_NAME, "a")
         for x in range(1, 4):
             self.assertIn(tag_a_elements[x].text, button_list)
-        # self.assertIn(driver.find_element(by=By.CLASS_NAME, value="button").text, button_list)
-        # self.assertIn(driver.find_element(by=By.CLASS_NAME, value="button alert").text, button_list)
+        # self.assertIn(driver.find_element(By.CLASS_NAME, "button").text, button_list)
+        # self.assertIn(driver.find_element(By.CLASS_NAME, "button alert").text, button_list)
 
     def test_table_actions(self):
-        driver = self.driver
         for x in range(1, 11):
-            edit_buttons = driver.find_element(by=By.XPATH, value=f"//tbody/tr[{x}]/td[7]/a[1]")
-            delete_buttons = driver.find_element(by=By.XPATH, value=f"//tbody/tr[{x}]/td[7]/a[2]")
+            edit_buttons = self.driver.find_element(By.XPATH, f"//tbody/tr[{x}]/td[7]/a[1]")
+            delete_buttons = self.driver.find_element(By.XPATH, f"//tbody/tr[{x}]/td[7]/a[2]")
             self.assertEqual(edit_buttons.text, "edit")
             self.assertEqual(delete_buttons.text, "delete")
 
     def test_table_columns(self):
-        driver = self.driver
-        table_headers = driver.find_elements(by=By.TAG_NAME, value="th")
+        table_headers = self.driver.find_elements(By.TAG_NAME, "th")
         for x in range(0, 7):
             self.assertEqual(table_headers[x].text, header_list[x])
 
     def test_table_content(self):
-        driver = self.driver
-        table_content = driver.find_elements(by=By.TAG_NAME, value="td")
+        table_content = self.driver.find_elements(By.TAG_NAME, "td")
         y = 0
         for x in range(0, 6):
             self.assertEqual(table_content[x].text, content_list0[y])
@@ -110,8 +104,7 @@ class ChallengingDOM(unittest.TestCase):
             y += 1
 
     def test_canvas_element(self):
-        driver = self.driver
-        canvas = driver.find_element(by=By.ID, value="canvas")
+        canvas = self.driver.find_element(By.ID, "canvas")
         self.assertDictEqual(canvas.size , canvas_size)
         # to be added
         # save the canvas as .png, use OCR to verify that the word "Answer:" is displayed

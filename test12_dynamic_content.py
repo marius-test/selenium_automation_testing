@@ -17,7 +17,7 @@ from selenium.common.exceptions import TimeoutException
 
 
 # PATH = Service("C:\\Users\\marius\\chromedriver.exe")
-s = Service(ChromeDriverManager().install())
+chrome_service = Service(ChromeDriverManager().install())
 url = "https://the-internet.herokuapp.com/"
 
 # Test data
@@ -31,21 +31,21 @@ dynamic_images = ["/img/avatars/Original-Facebook-Geek-Profile-Avatar-1.jpg", "/
 
 class DynamicContent(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome(service=s)
-        driver = self.driver
-        driver.get(url)
-        driver.maximize_window()
-        WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
-        driver.find_element(by=By.XPATH, value="/html/body/div[2]/div/ul/li[12]/a").click()
-        driver.find_element(by=By.XPATH, value='/html/body/div[2]/div/div/p[2]/a').click()
+        self.driver = webdriver.Chrome(service=chrome_service)
+        self.driver.get(url)
+        self.driver.maximize_window()
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
+        self.driver.find_element(By.XPATH, "/html/body/div[2]/div/ul/li[12]/a").click()
+        self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/p[2]/a").click()
         
     def test_title_is_correct(self):
-        driver = self.driver
-        title = driver.find_element(by=By.CSS_SELECTOR, value="h3").text
+        title = self.driver.find_element(By.CSS_SELECTOR, "h3").text
+        self.assertEqual(title, expected_title)
+        self.driver.refresh()  # refreshing the page to test the dynamic/static content
         self.assertEqual(title, expected_title)
         
     def test_static_text(self):
-        pass
+        driver = self.driver
     
     def test_static_images(self):
         pass

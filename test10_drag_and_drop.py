@@ -9,34 +9,31 @@ from seletools.actions import drag_and_drop
 
 
 # PATH = Service("C:\\Users\\marius\\chromedriver.exe")
-s = Service(ChromeDriverManager().install())
+chrome_service = Service(ChromeDriverManager().install())
 url = "https://the-internet.herokuapp.com/"
 
 
 class DragAndDrop(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome(service=s)
-        driver = self.driver
-        driver.get(url)
-        driver.maximize_window()
-        WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
-        driver.find_element(by=By.XPATH, value="/html/body/div[2]/div/ul/li[10]/a").click()
+        self.driver = webdriver.Chrome(service=chrome_service)
+        self.driver.get(url)
+        self.driver.maximize_window()
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
+        self.driver.find_element(By.XPATH, "/html/body/div[2]/div/ul/li[10]/a").click()
     
     def test_drag_A_on_B(self):
-        driver = self.driver
-        source_A = driver.find_element(by=By.ID, value='column-a')
-        target_B = driver.find_element(by=By.ID, value='column-b')
-        drag_and_drop(driver, source_A, target_B)
-        header = driver.find_elements(by=By.TAG_NAME, value="header")
+        source_A = self.driver.find_element(By.ID, 'column-a')
+        target_B = self.driver.find_element(By.ID, 'column-b')
+        drag_and_drop(self.driver, source_A, target_B)
+        header = self.driver.find_elements(By.TAG_NAME, "header")
         self.assertEqual(header[0].text, "B")
         self.assertEqual(header[1].text, "A")
          
     def test_drag_B_on_A(self):
-        driver = self.driver
-        source_B = driver.find_element(by=By.ID, value='column-b')
-        target_A = driver.find_element(by=By.ID, value='column-a')
-        drag_and_drop(driver, source_B, target_A)
-        header = driver.find_elements(by=By.TAG_NAME, value="header")
+        source_B = self.driver.find_element(By.ID, 'column-b')
+        target_A = self.driver.find_element(By.ID, 'column-a')
+        drag_and_drop(self.driver, source_B, target_A)
+        header = self.driver.find_elements(By.TAG_NAME, "header")
         self.assertEqual(header[0].text, "B")
         self.assertEqual(header[1].text, "A")
 
