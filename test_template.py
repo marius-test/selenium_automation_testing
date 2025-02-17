@@ -40,7 +40,7 @@ class TestName(unittest.TestCase):
     
     def test_y(self):
         # locators, waits, actions
-        self.assertEqual(1, 1)
+        self.assertEqual(True, False)
     
     def tearDown(self):
         self.driver.quit()

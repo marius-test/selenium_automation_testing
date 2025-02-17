@@ -14,8 +14,8 @@ chrome_service = Service(ChromeDriverManager().install())
 url = "https://the-internet.herokuapp.com/"
 
 # Test data
-header = "Disappearing Elements"
-paragraph = "This example demonstrates when elements on a page change by disappearing/reappearing on each page load."
+expected_header = "Disappearing Elements"
+expected_paragraph = "This example demonstrates when elements on a page change by disappearing/reappearing on each page load."
 expected_buttons = ["Home", "About", "Contact Us", "Portfolio", "Gallery"]
 expected_footer = "Powered by Elemental Selenium"
 expected_footer_link = "http://elementalselenium.com/"
@@ -32,23 +32,23 @@ class DisappearingElements(unittest.TestCase):
         self.driver.find_element(By.XPATH, "/html/body/div[2]/div/ul/li[9]/a").click()
 
     def test_header_and_paragraph(self):
-        self.assertEqual(self.driver.find_element(By.TAG_NAME, "h3").text, header)
-        self.assertEqual(self.driver.find_element(By.TAG_NAME, "p").text, paragraph)
+        self.assertEqual(expected_header, self.driver.find_element(By.TAG_NAME, "h3").text)
+        self.assertEqual(expected_paragraph, self.driver.find_element(By.TAG_NAME, "p").text)
     
     def test_buttons_text(self):
         list_of_buttons = self.driver.find_elements(By.TAG_NAME, "li")
         i = 0
         for button in list_of_buttons:
-            self.assertEqual(list_of_buttons[i].text, expected_buttons[i])
+            self.assertEqual(expected_buttons[i], list_of_buttons[i].text)
             i += 1
 
     def test_buttons_redirect(self):
         list_of_buttons = self.driver.find_elements(By.TAG_NAME, "a")
         for i in range(0, 4):
-            self.assertEqual(list_of_buttons[i + 1].get_attribute("href"), f"https://the-internet.herokuapp.com/{x[i]}")
+            self.assertEqual(f"https://the-internet.herokuapp.com/{x[i]}", list_of_buttons[i + 1].get_attribute("href"))
             list_of_buttons[i + 1].click()
             response = requests.get(self.driver.current_url, stream=True)
-            self.assertEqual(str(response), expected_response[i])
+            self.assertEqual(expected_response[i], str(response))
             self.driver.back()
       
     def test_missing_button(self):
@@ -64,8 +64,8 @@ class DisappearingElements(unittest.TestCase):
     def test_footer(self):
         footer = self.driver.find_element(By.XPATH, "/html/body/div[3]/div/div")
         link = self.driver.find_element(By.XPATH, "/html/body/div[3]/div/div/a")
-        self.assertEqual(footer.text, expected_footer)
-        self.assertEqual(link.get_attribute("href"), expected_footer_link)
+        self.assertEqual(expected_footer, footer.text)
+        self.assertEqual(expected_footer_link, link.get_attribute("href"))
 
     def tearDown(self):
         self.driver.quit()

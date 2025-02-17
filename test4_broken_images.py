@@ -28,7 +28,7 @@ class TestBrokenImages(unittest.TestCase):
             response = requests.get(image.get_attribute('src'), stream=True)
             if response.status_code != 200:
                 broken_images += 1
-        self.assertEqual(str(broken_images), "0")
+        self.assertEqual("0", str(broken_images))
     
     def tearDown(self):
         self.driver.quit()

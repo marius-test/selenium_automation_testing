@@ -26,16 +26,16 @@ class DragAndDrop(unittest.TestCase):
         target_B = self.driver.find_element(By.ID, 'column-b')
         drag_and_drop(self.driver, source_A, target_B)
         header = self.driver.find_elements(By.TAG_NAME, "header")
-        self.assertEqual(header[0].text, "B")
-        self.assertEqual(header[1].text, "A")
+        self.assertEqual("B", header[0].text)
+        self.assertEqual("A", header[1].text)
          
     def test_drag_B_on_A(self):
         source_B = self.driver.find_element(By.ID, 'column-b')
         target_A = self.driver.find_element(By.ID, 'column-a')
         drag_and_drop(self.driver, source_B, target_A)
         header = self.driver.find_elements(By.TAG_NAME, "header")
-        self.assertEqual(header[0].text, "B")
-        self.assertEqual(header[1].text, "A")
+        self.assertEqual("B", header[0].text)
+        self.assertEqual("A", header[1].text)
 
     def tearDown(self):
         self.driver.quit()

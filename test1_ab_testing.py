@@ -12,8 +12,8 @@ chrome_service = Service(ChromeDriverManager().install())
 url = "https://the-internet.herokuapp.com/"
 
 # Test data
-title = ["A/B Test Control", "A/B Test Variation 1"]
-text = "Also known as split testing. This is a way in which businesses are able to simultaneously test and learn different versions of a page to see which text and/or functionality works best towards a desired outcome (e.g. a user action such as a click-through)."
+expected_title = ["A/B Test Control", "A/B Test Variation 1"]
+expected_text = "Also known as split testing. This is a way in which businesses are able to simultaneously test and learn different versions of a page to see which text and/or functionality works best towards a desired outcome (e.g. a user action such as a click-through)."
 
 
 class ABTesting(unittest.TestCase):
@@ -25,12 +25,12 @@ class ABTesting(unittest.TestCase):
     def test_title_is_correct(self):
         self.driver.find_element(By.CSS_SELECTOR, "a[href='/abtest']").click()
         WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h3")))
-        self.assertIn(self.driver.find_element(By.TAG_NAME, "h3").text, title)
+        self.assertIn(expected_title, self.driver.find_element(By.TAG_NAME, "h3").text)
                          
     def test_text_is_correct(self):
         self.driver.find_element(By.CSS_SELECTOR, "a[href='/abtest']").click()
         WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "p")))
-        self.assertEqual(self.driver.find_element(By.TAG_NAME, "p").text, text)
+        self.assertEqual(expected_text, self.driver.find_element(By.TAG_NAME, "p").text)
     
     def tearDown(self):
         self.driver.quit()

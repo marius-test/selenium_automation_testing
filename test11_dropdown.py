@@ -26,21 +26,21 @@ class Dropdown(unittest.TestCase):
     def test_unselectable(self):
         self.driver.find_element(By.ID, "dropdown").click()
         options = self.driver.find_elements(By.TAG_NAME, "option")
-        self.assertAlmostEqual(options[0].text, expected_unselectable_text)
+        self.assertAlmostEqual(expected_unselectable_text, options[0].text)
      
     def test_select_option1(self):
         self.driver.find_element(By.ID, "dropdown").click()
         options = self.driver.find_elements(By.TAG_NAME, "option")
         options[1].click()
         selected = options[1].get_attribute("selected")
-        self.assertEqual(selected, "true")
+        self.assertEqual("true", selected)
 
     def test_select_option2(self):
         self.driver.find_element(By.ID, "dropdown").click()
         options = self.driver.find_elements(By.TAG_NAME, "option")
         options[2].click()
         selected = options[2].get_attribute("selected")
-        self.assertEqual(selected, "true")
+        self.assertEqual("true", selected)
         
     def tearDown(self):
         self.driver.quit()

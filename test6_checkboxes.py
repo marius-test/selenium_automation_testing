@@ -12,7 +12,7 @@ chrome_service = Service(ChromeDriverManager().install())
 url = "https://the-internet.herokuapp.com/"
 
 # Test data
-text = "checkbox 1\ncheckbox 2"
+expected_text = "checkbox 1\ncheckbox 2"
 
 
 class Checkboxes(unittest.TestCase):
@@ -25,7 +25,7 @@ class Checkboxes(unittest.TestCase):
 
     def test_text(self):
         checkbox_string = self.driver.find_element(By.TAG_NAME, "form").text
-        self.assertEqual(checkbox_string, text)
+        self.assertEqual(expected_text, checkbox_string)
 
     def test_check(self):
         checkbox = self.driver.find_elements(By.TAG_NAME, "input")

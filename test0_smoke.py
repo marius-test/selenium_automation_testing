@@ -12,8 +12,8 @@ s = Service(ChromeDriverManager().install())
 url = "https://the-internet.herokuapp.com/"
 
 # Test data
-title = "Welcome to the-internet"
-subtitle = "Available Examples"
+expected_title = "Welcome to the-internet"
+expected_subtitle = "Available Examples"
 
 
 class Smoke(unittest.TestCase):
@@ -24,8 +24,8 @@ class Smoke(unittest.TestCase):
     
     def test_homepage_reached(self):
         WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
-        self.assertEqual(self.driver.find_element(By.TAG_NAME, "h1").text, title)
-        self.assertEqual(self.driver.find_element(By.TAG_NAME, "h2").text, subtitle)
+        self.assertEqual(expected_title, self.driver.find_element(By.TAG_NAME, "h1").text)
+        self.assertEqual(expected_subtitle, self.driver.find_element(By.TAG_NAME, "h2").text)
     
     def tearDown(self):
         self.driver.quit()

@@ -15,10 +15,10 @@ chrome_service = Service(ChromeDriverManager().install())
 url = "https://the-internet.herokuapp.com/"
 
 # Test data
-title = "Context Menu"
-text1 = "Context menu items are custom additions that appear in the right-click menu."
-text2 = "Right-click in the box below to see one called 'the-internet'. When you click it, it will trigger a JavaScript alert."
-alert_text = "You selected a context menu"
+expected_title = "Context Menu"
+expected_text_1 = "Context menu items are custom additions that appear in the right-click menu."
+expected_text_2 = "Right-click in the box below to see one called 'the-internet'. When you click it, it will trigger a JavaScript alert."
+expected_alert_text = "You selected a context menu"
 
 
 class ContextMenu(unittest.TestCase):
@@ -31,27 +31,27 @@ class ContextMenu(unittest.TestCase):
 
     def test_title_text(self):
         paragraph = self.driver.find_elements(By.TAG_NAME, "p")
-        self.assertEqual(self.driver.find_element(By.TAG_NAME, "h3").text, title)
-        self.assertEqual(paragraph[0].text, text1)
-        self.assertEqual(paragraph[1].text, text2)
+        self.assertEqual(expected_title, self.driver.find_element(By.TAG_NAME, "h3").text)
+        self.assertEqual(expected_text_1, paragraph[0].text)
+        self.assertEqual(expected_text_2, paragraph[1].text)
         
     def test_box_properties(self):
         style = self.driver.find_element(By.ID, "hot-spot").get_attribute("style")
-        self.assertEqual(style, "border-style: dashed; border-width: 5px; width: 250px; height: 150px;")
+        self.assertEqual("border-style: dashed; border-width: 5px; width: 250px; height: 150px;", style)
 
     def test_alert_box_open(self):
         alert = Alert(self.driver)
         action = ActionChains(self.driver)
         box = self.driver.find_element(By.ID, "hot-spot")
         action.context_click(box).perform()
-        self.assertEqual(alert.text, alert_text)
+        self.assertEqual(expected_alert_text, alert.text)
 
     def test_alert_box_closed(self):
         alert = Alert(self.driver)
         action = ActionChains(self.driver)
         box = self.driver.find_element(By.ID, "hot-spot")
         action.context_click(box).perform()
-        self.assertEqual(alert.text, alert_text)
+        self.assertEqual(expected_alert_text, alert.text)
         alert.accept()
         try:
             WebDriverWait(self.driver, 2).until(EC.alert_is_present())

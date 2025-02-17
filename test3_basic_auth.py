@@ -15,8 +15,8 @@ url = "https://the-internet.herokuapp.com/"
 
 # Test data
 username = password = "admin"
-title = "Basic Auth"
-text = "Congratulations! You must have the proper credentials."
+expected_title = "Basic Auth"
+expected_text = "Congratulations! You must have the proper credentials."
 
 
 class BasicAuth(unittest.TestCase):
@@ -28,15 +28,15 @@ class BasicAuth(unittest.TestCase):
     def test_login_successful(self):
         login_url = f"https://{username}:{password}@the-internet.herokuapp.com/basic_auth"
         self.driver.get(login_url)
-        self.assertEqual(title, self.driver.find_element(By.TAG_NAME, "h3").text)
-        self.assertEqual(text, self.driver.find_element(By.TAG_NAME, "p").text)
+        self.assertEqual(expected_title, self.driver.find_element(By.TAG_NAME, "h3").text)
+        self.assertEqual(expected_text, self.driver.find_element(By.TAG_NAME, "p").text)
 
     def test_login_failed(self):
         self.driver.find_element(By.CSS_SELECTOR, "a[href='/basic_auth']").click()
         Controller().press(Key.esc)
         Controller().release(Key.esc)
         time.sleep(2)
-        self.assertEqual(self.driver.find_element(By.TAG_NAME, "body").text, "Not authorized")
+        self.assertEqual("Not authorized", self.driver.find_element(By.TAG_NAME, "body").text)
 
     def tearDown(self):
         self.driver.quit()

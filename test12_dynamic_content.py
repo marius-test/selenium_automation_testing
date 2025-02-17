@@ -22,11 +22,11 @@ url = "https://the-internet.herokuapp.com/"
 
 # Test data
 expected_title = 'Dynamic Content'
-static_text_1 = "Accusantium eius ut architecto neque vel voluptatem vel nam eos minus ullam dolores voluptates enim sed voluptatem rerum qui sapiente nesciunt aspernatur et accusamus laboriosam culpa tenetur hic aut placeat error autem qui sunt."
-static_text_2 = "Omnis fugiat porro vero quas tempora quis eveniet ab officia cupiditate culpa repellat debitis itaque possimus odit dolorum et iste quibusdam quis dicta autem sint vel quo vel consequuntur dolorem nihil neque sunt aperiam blanditiis."
-static_image_1 = "/img/avatars/Original-Facebook-Geek-Profile-Avatar-2.jpg"
-static_image_2 = "/img/avatars/Original-Facebook-Geek-Profile-Avatar-7.jpg"
-dynamic_images = ["/img/avatars/Original-Facebook-Geek-Profile-Avatar-1.jpg", "/img/avatars/Original-Facebook-Geek-Profile-Avatar-3.jpg", "/img/avatars/Original-Facebook-Geek-Profile-Avatar-5.jpg"]
+expected_static_text_1 = "Accusantium eius ut architecto neque vel voluptatem vel nam eos minus ullam dolores voluptates enim sed voluptatem rerum qui sapiente nesciunt aspernatur et accusamus laboriosam culpa tenetur hic aut placeat error autem qui sunt."
+expected_static_text_2 = "Omnis fugiat porro vero quas tempora quis eveniet ab officia cupiditate culpa repellat debitis itaque possimus odit dolorum et iste quibusdam quis dicta autem sint vel quo vel consequuntur dolorem nihil neque sunt aperiam blanditiis."
+expected_static_image_1 = "/img/avatars/Original-Facebook-Geek-Profile-Avatar-2.jpg"
+expected_static_image_2 = "/img/avatars/Original-Facebook-Geek-Profile-Avatar-7.jpg"
+expected_dynamic_images = ["/img/avatars/Original-Facebook-Geek-Profile-Avatar-1.jpg", "/img/avatars/Original-Facebook-Geek-Profile-Avatar-3.jpg", "/img/avatars/Original-Facebook-Geek-Profile-Avatar-5.jpg"]
 
 
 class DynamicContent(unittest.TestCase):
@@ -39,14 +39,14 @@ class DynamicContent(unittest.TestCase):
         self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/p[2]/a").click()
         
     def test_title_is_correct(self):
-        title = self.driver.find_element(By.CSS_SELECTOR, "h3").text
-        self.assertEqual(title, expected_title)
+        self.assertEqual(expected_title, self.driver.find_element(By.CSS_SELECTOR, "h3").text)
         self.driver.refresh()  # refreshing the page to test the dynamic/static content
-        self.assertEqual(title, expected_title)
-        
+        self.assertEqual(expected_title, self.driver.find_element(By.CSS_SELECTOR, "h3").text)
+
     def test_static_text(self):
-        driver = self.driver
-    
+        self.assertEqual(expected_static_text_1, self.driver.find_element(By.XPATH, "//*[@id=\"content\"]/div[1]/div[2]/text()").text)
+        
+'''
     def test_static_images(self):
         pass
     
@@ -58,7 +58,7 @@ class DynamicContent(unittest.TestCase):
     
     def tearDown(self):
         self.driver.quit()
-
+'''
 
 if __name__ == '__main__':
     unittest.main()
