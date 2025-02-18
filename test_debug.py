@@ -4,6 +4,7 @@
 # import pyautogui
 # import seletools
 import time
+import unittest
 # from pynput.keyboard import Key, Controller
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -29,6 +30,7 @@ def test_debug():
     driver.maximize_window()
     WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
     driver.find_element(By.XPATH, "/html/body/div[2]/div/ul/li[12]/a").click()
+    """
     driver.find_element(By.XPATH, "/html/body/div[2]/div/div/p[2]/a").click()
     WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h3")))
     image_1 = driver.find_element(By.XPATH, '//*[@id="content"]/div[1]/div[1]/img')
@@ -37,6 +39,9 @@ def test_debug():
     image_2_src = image_2.get_attribute('src')
     print(image_1_src)
     print(image_2_src)
+    """
+    dynamic_text = driver.find_element(By.XPATH, '//*[@id="content"]/div[1]/div[2]').text
+    print(dynamic_text)
     time.sleep(5)
     driver.quit()
 

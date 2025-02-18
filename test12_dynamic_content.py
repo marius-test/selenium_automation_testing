@@ -24,8 +24,8 @@ url = "https://the-internet.herokuapp.com/"
 expected_title = 'Dynamic Content'
 expected_static_text_1 = "Accusantium eius ut architecto neque vel voluptatem vel nam eos minus ullam dolores voluptates enim sed voluptatem rerum qui sapiente nesciunt aspernatur et accusamus laboriosam culpa tenetur hic aut placeat error autem qui sunt."
 expected_static_text_2 = "Omnis fugiat porro vero quas tempora quis eveniet ab officia cupiditate culpa repellat debitis itaque possimus odit dolorum et iste quibusdam quis dicta autem sint vel quo vel consequuntur dolorem nihil neque sunt aperiam blanditiis."
-expected_static_image_1 = "https://the-internet.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-1.jpg"
-expected_static_image_2 = "https://the-internet.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-5.jpg"
+expected_static_image_1 = "https://the-internet.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-5.jpg"
+expected_static_image_2 = "https://the-internet.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-6.jpg"
 images_numbers = [0, 1, 2, 3, 4, 5, 6, 7]
 expected_dynamic_images = [f"https://the-internet.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-{number}.jpg" for number in images_numbers]
 
@@ -64,10 +64,15 @@ class DynamicContent(unittest.TestCase):
         self.assertEqual(expected_static_image_2, image_2_src)
  
     def test_dynamic_text(self):
-        pass
-    
+        self.assertIsInstance(self.driver.find_element(By.XPATH, '//*[@id="content"]/div[1]/div[2]').text, str)
+        self.assertIsInstance(self.driver.find_element(By.XPATH, '//*[@id="content"]/div[2]/div[2]').text, str)
+        self.assertIsInstance(self.driver.find_element(By.XPATH, '//*[@id="content"]/div[3]/div[2]').text, str)
+
     def test_dynamic_images(self):
-        pass
+        images = self.driver.find_elements(By.TAG_NAME, "img")
+        for image in images:
+            with self.subTest(image=image):
+                self.assertEqual(image.tag_name, "img")
     
     def tearDown(self):
         self.driver.quit()
