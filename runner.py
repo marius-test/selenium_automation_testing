@@ -12,7 +12,8 @@ test_files = ['test0_smoke.py',
               'test8_digest_authentication',
               'test9_disappearing_elements',
               'test10_drag_and_drop',
-              'test11_dropdown']
+              'test11_dropdown',
+              'test12_dynamic_content.py']
 
 
 if __name__ == '__main__':

@@ -11,7 +11,7 @@ from selenium.webdriver.support import expected_conditions as EC
 chrome_service = Service(ChromeDriverManager().install())
 url = "https://the-internet.herokuapp.com/"
 
-# Test data
+# test data
 expected_title = ["A/B Test Control", "A/B Test Variation 1"]
 expected_text = "Also known as split testing. This is a way in which businesses are able to simultaneously test and learn different versions of a page to see which text and/or functionality works best towards a desired outcome (e.g. a user action such as a click-through)."
 

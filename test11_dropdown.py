@@ -11,7 +11,7 @@ from selenium.webdriver.support import expected_conditions as EC
 chrome_service = Service(ChromeDriverManager().install())
 url = "https://the-internet.herokuapp.com/"
 
-# Test data
+# test data
 expected_unselectable_text = "Please select an option"
 
 

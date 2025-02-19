@@ -14,7 +14,7 @@ from selenium.webdriver.support import expected_conditions as EC
 chrome_service = Service(ChromeDriverManager().install())
 url = "https://the-internet.herokuapp.com/"
 
-# Test data
+# test data
 username = password = "admin"
 expected_title = "Digest Auth"
 expected_text = "Congratulations! You must have the proper credentials."

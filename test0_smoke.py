@@ -11,7 +11,7 @@ from selenium.webdriver.support import expected_conditions as EC
 s = Service(ChromeDriverManager().install())
 url = "https://the-internet.herokuapp.com/"
 
-# Test data
+# test data
 expected_title = "Welcome to the-internet"
 expected_subtitle = "Available Examples"
 
