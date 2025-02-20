@@ -15,7 +15,7 @@ url = "https://the-internet.herokuapp.com/"
 expected_text = "checkbox 1\ncheckbox 2"
 
 
-class Checkboxes(unittest.TestCase):
+class TestCheckboxes(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome(service=chrome_service)
         self.driver.get(url)

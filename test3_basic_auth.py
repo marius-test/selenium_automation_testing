@@ -19,7 +19,7 @@ expected_title = "Basic Auth"
 expected_text = "Congratulations! You must have the proper credentials."
 
 
-class BasicAuth(unittest.TestCase):
+class TestBasicAuth(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome(service=chrome_service)
         self.driver.get(url)

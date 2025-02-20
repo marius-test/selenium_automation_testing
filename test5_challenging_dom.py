@@ -29,7 +29,7 @@ expected_content_list9 = ["Iuvaret9", "Apeirian9", "Adipisci9", "Definiebas9", "
 expected_canvas_size = {'height': 202, 'width': 601}
 
 
-class ChallengingDOM(unittest.TestCase):
+class TestChallengingDOM(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome(service=chrome_service)
         self.driver.get(url)

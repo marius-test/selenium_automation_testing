@@ -21,7 +21,7 @@ expected_text_2 = "Right-click in the box below to see one called 'the-internet'
 expected_alert_text = "You selected a context menu"
 
 
-class ContextMenu(unittest.TestCase):
+class TestContextMenu(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome(service=chrome_service)
         self.driver.get(url)

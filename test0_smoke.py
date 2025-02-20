@@ -16,7 +16,7 @@ expected_title = "Welcome to the-internet"
 expected_subtitle = "Available Examples"
 
 
-class Smoke(unittest.TestCase):
+class TestSmoke(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome(service=s)
         self.driver.get(url)

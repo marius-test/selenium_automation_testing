@@ -30,7 +30,7 @@ images_numbers = [0, 1, 2, 3, 4, 5, 6, 7]
 expected_dynamic_images = [f"https://the-internet.herokuapp.com/img/avatars/Original-Facebook-Geek-Profile-Avatar-{number}.jpg" for number in images_numbers]
 
 
-class DynamicContent(unittest.TestCase):
+class TestDynamicContent(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome(service=chrome_service)
         self.driver.get(url)

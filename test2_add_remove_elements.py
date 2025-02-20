@@ -11,7 +11,7 @@ chrome_service = Service(ChromeDriverManager().install())
 url = "https://the-internet.herokuapp.com/"
 
 
-class AddRemoveElement(unittest.TestCase):
+class TestAddRemoveElement(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome(service=chrome_service)
         self.driver.get(url)

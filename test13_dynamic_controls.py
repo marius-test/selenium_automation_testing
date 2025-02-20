@@ -26,11 +26,13 @@ url = "https://the-internet.herokuapp.com/"
 # test data
 
 
-class TestName(unittest.TestCase):
+class TestDynamicControls(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome(service=PATH)
         self.driver.get(url)
         self.driver.maximize_window()
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
+        self.driver.find_element(By.XPATH, '//*[@id="content"]/ul/li[13]/a').click()
     
     def test_x(self):
         # locators, waits, actions

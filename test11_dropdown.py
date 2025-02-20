@@ -15,7 +15,7 @@ url = "https://the-internet.herokuapp.com/"
 expected_unselectable_text = "Please select an option"
 
 
-class Dropdown(unittest.TestCase):
+class TestDropdown(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome(service=chrome_service)
         self.driver.get(url)

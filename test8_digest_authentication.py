@@ -21,7 +21,7 @@ expected_text = "Congratulations! You must have the proper credentials."
 expected_response = "<Response [401]>"
 
 
-class DigestAuth(unittest.TestCase):
+class TestDigestAuth(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome(service=chrome_service)
         self.driver.get(url)

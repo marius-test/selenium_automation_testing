@@ -23,7 +23,7 @@ expected_url = x = ["", "about/", "contact-us/", "portfolio/", "gallery/"]
 expected_response = ["<Response [200]>", "<Response [404]>", "<Response [404]>", "<Response [404]>"]
 
 
-class DisappearingElements(unittest.TestCase):
+class TestDisappearingElements(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome(service=chrome_service)
         self.driver.get(url)
