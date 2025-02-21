@@ -34,13 +34,29 @@ class TestDynamicControls(unittest.TestCase):
         WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
         self.driver.find_element(By.XPATH, '//*[@id="content"]/ul/li[13]/a').click()
     
-    def test_x(self):
-        # locators, waits, actions
-        self.assertEqual(1, 1)
+    def test_tick_checkbox(self):
+        pass
     
-    def test_y(self):
-        # locators, waits, actions
-        self.assertEqual(True, False)
+    def test_untick_checkbox(self):
+        pass
+    
+    def test_remove_ticked_checkbox(self):
+        pass
+    
+    def test_add_ticked_checkbox(self):
+        pass
+    
+    def test_enable_empty_field(self):
+        pass
+    
+    def test_disable_empty_field(self):
+        pass
+    
+    def test_disable_full_field(self):
+        pass
+    
+    def test_enable_full_field(self):
+        pass
     
     def tearDown(self):
         self.driver.quit()
