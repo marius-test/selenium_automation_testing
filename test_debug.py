@@ -20,7 +20,7 @@ from selenium.common.exceptions import TimeoutException
 
 
 
-PATH = Service("C:\\Users\\marius\\chromedriver.exe")
+PATH = Service("C:\\Users\\marius\\webdriver\\chromedriver.exe")
 # chrome_service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=PATH)
 url = "https://the-internet.herokuapp.com/"
