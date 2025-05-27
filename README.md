@@ -6,8 +6,8 @@ This website has 44 pages with most of the functionalities found on a modern web
 
 The technology stack used for this project is the following:
 
-- **Python 3** as the main programming language
-- **unittest** as the testing framework
+- **Python** as the main programming language
+- **unittest** and **pytest** as the testing framework
 - **Selenium WebDriver** as the automation framework
 - **chromedriver** as the main remote control interface
 - **geckodriver** as the secondary remote control interface
