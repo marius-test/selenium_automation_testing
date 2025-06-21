@@ -8,6 +8,7 @@ The technology stack used for this project is the following:
 
 - **Python** as the main programming language
 - **unittest** and **pytest** as the testing framework
+- **allure** and **allure** as the reporting framework
 - **Selenium WebDriver** as the automation framework
 - **chromedriver** as the main remote control interface
 - **geckodriver** as the secondary remote control interface
