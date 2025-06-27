@@ -1,22 +1,28 @@
 # automating_the-internet
 
-The goal of this project is to fully write automated test cases for the following website <https://the-internet.herokuapp.com/>.
+This is my largest automation project so far, built in **Python** using **Selenium WebDriver** and the built-in **unittest** framework.
 
-This website has 44 pages with most of the functionalities found on a modern website.
+Each site feature presents a small challenge: how to locate elements, interact with them, and handle browser behavior, leading me to design multiple positive and negative test cases per functionality.
 
-The technology stack used for this project is the following:
+I chose **unittest** over `pytest` or `allure` to focus more on **OOP concepts**. I explore those tools in other projects.
 
-- **Python** as the main programming language
-- **unittest** and **pytest** as the testing framework
-- **allure** and **allure** as the reporting framework
-- **Selenium WebDriver** as the automation framework
-- **chromedriver** as the main remote control interface
-- **geckodriver** as the secondary remote control interface
-- **Visual Studio Code** as the main integrated development environment
-- **PyCharm** as the secondary integrated development environment
-- **GitHub** as the version control system
-- more than 5 years of software testing experience as a QA Engineer
+### Project Goals
 
-By completing this project, I aim to understand the basics of **Automation Testing**.
+The goal of this project is to write automated test cases for the website: [https://the-internet.herokuapp.com/](https://the-internet.herokuapp.com/)
 
-## This project is in progress...
+This site includes **44 pages**, each with distinct elements and behaviors found on modern websites, perfect for practicing comprehensive test automation.
+
+### Tech Stack
+
+- **Python** - core programming language  
+- **unittest** - testing framework  
+- **Selenium WebDriver** - browser automation  
+- **ChromeDriver** - main driver  
+- **MSEdgeDriver** - alternative driver
+- **Visual Studio Code** - main IDE  
+- **PyCharm** - secondary IDE  
+- **GitHub** - version control system
+
+### Status
+
+This project is currently **in progress** and continuously evolving as I automate more features and refine test design and structure.
