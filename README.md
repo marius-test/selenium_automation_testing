@@ -6,6 +6,10 @@ Each site feature presents a small challenge: how to locate elements, interact w
 
 I chose **unittest** over `pytest` or `allure` to focus more on **OOP concepts**. I explore those tools in other projects.
 
+I have also created a custom test runner, a debug file for troubleshooting, a test template for consistency, and a test debug file to aid in development.
+
+I plan to develop a custom reporter and add more granular test control as the project evolves.
+
 ### Project Goals
 
 The goal of this project is to write automated test cases for the website: [https://the-internet.herokuapp.com/](https://the-internet.herokuapp.com/)
