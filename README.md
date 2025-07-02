@@ -12,7 +12,9 @@ I have also created a custom test runner, a debug file for troubleshooting, a te
 
 I plan to develop a custom reporter and add more granular test control as the project evolves.
 
-### Tech Stack
+---
+
+### Tools and Libraries
 
 - **Python** - core programming language  
 - **unittest** - testing framework  
@@ -22,6 +24,8 @@ I plan to develop a custom reporter and add more granular test control as the pr
 - **Visual Studio Code** - main IDE  
 - **PyCharm** - secondary IDE  
 - **GitHub** - version control system
+
+---
 
 ### Status
 
