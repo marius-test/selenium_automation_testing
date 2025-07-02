@@ -15,6 +15,7 @@
         "Phaedrum",
         "pyautogui",
         "pynput",
-        "seletools"
+        "seletools",
+        "untick"
     ]
 }
