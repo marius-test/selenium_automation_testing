@@ -29,4 +29,4 @@ I plan to develop a custom reporter and add more granular test control as the pr
 
 ### Status
 
-This project is currently **in progress** and continuously evolving as I automate more features and refine test design and structure.
+🚧 This project is currently **in progress** and continuously evolving as I automate more features and refine test design and structure. 🚧
