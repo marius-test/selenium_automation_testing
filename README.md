@@ -1,20 +1,16 @@
-# automating_the-internet
+# selenium_automation_testing
 
-This is my largest automation project so far, built in **Python** using **Selenium WebDriver** and the built-in **unittest** framework.
+Built in Python using Selenium WebDriver and the unittest framework, this project focuses on practicing Selenium by working on challenging and complex functionalities with an emphasis on problem solving and testing.
 
-Each site feature presents a small challenge: how to locate elements, interact with them, and handle browser behavior, leading me to design multiple positive and negative test cases per functionality.
+For a complete Selenium framework implementation, see my other project: [selenium_automation_framework](https://github.com/marius-test/selenium_automation_framework).
 
-I chose **unittest** over `pytest` or `allure` to focus more on **OOP concepts**. I explore those tools in other projects.
+Each site feature presents a challenge: how to locate elements, interact with them, and handle browser behavior, leading me to design multiple positive and negative test cases per functionality.
+
+I chose **unittest** over `pytest` or `allure` to to keep the test design simple and focused.
 
 I have also created a custom test runner, a debug file for troubleshooting, a test template for consistency, and a test debug file to aid in development.
 
 I plan to develop a custom reporter and add more granular test control as the project evolves.
-
-### Project Goals
-
-The goal of this project is to write automated test cases for the website: [https://the-internet.herokuapp.com/](https://the-internet.herokuapp.com/)
-
-This site includes **44 pages**, each with distinct elements and behaviors found on modern websites, perfect for practicing comprehensive test automation.
 
 ### Tech Stack
 
