@@ -6,7 +6,7 @@ Built with **Python**, **Selenium WebDriver**, and the **unittest** framework, t
 
 Each feature pushes testing boundaries by requiring tricky element location, simulating user actions, or handling browser quirks, leading to both positive and negative test cases.
 
-I chose `unittest` for its simplicity, built-in support, and suitability for learning-focused projects.
+I chose `unittest` for its straightforward setup, native Python support, and focus on writing clear, maintainable tests.
 
 The project includes a custom test runner, debug tools, and a reusable test template. Future plans include a custom reporter and more granular test control.
 
@@ -27,14 +27,14 @@ Each test runs **independently**, creating and managing its own WebDriver instan
 
 ### Tools and Libraries
 
-- **Python** – core programming language  
-- **unittest** – testing framework  
-- **Selenium WebDriver** – browser automation  
-- **ChromeDriver** – main driver  
-- **MSEdgeDriver** – alternative driver  
-- **Visual Studio Code** – main IDE  
-- **PyCharm** – secondary IDE  
-- **GitHub** – version control system
+- **Python** - core programming language  
+- **unittest** - testing framework  
+- **Selenium WebDriver** - browser automation  
+- **ChromeDriver** - main driver  
+- **MSEdgeDriver** - alternative driver  
+- **Visual Studio Code** - main IDE  
+- **PyCharm** - secondary IDE  
+- **GitHub** - version control system
 
 ---
 
