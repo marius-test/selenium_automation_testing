@@ -9,7 +9,6 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.alert import Alert
 from selenium.common.exceptions import TimeoutException
 
-
 # PATH = Service("C:\\Users\\marius\\webdriver\\chromedriver.exe")
 chrome_service = Service(ChromeDriverManager().install())
 url = "https://the-internet.herokuapp.com/"

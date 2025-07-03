@@ -8,7 +8,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from pynput.keyboard import Key, Controller
 
-
 # PATH = Service("C:\\Users\\marius\\webdriver\\chromedriver.exe")
 chrome_service = Service(ChromeDriverManager().install())
 url = "https://the-internet.herokuapp.com/"
