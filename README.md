@@ -1,16 +1,27 @@
 # selenium_automation_testing
 
-Built in Python using Selenium WebDriver and the unittest framework, this project focuses on practicing Selenium by working on challenging and complex functionalities with an emphasis on problem solving and testing.
+Target website: [https://the-internet.herokuapp.com/](https://the-internet.herokuapp.com/)
 
-For a complete Selenium framework implementation, see my other project: [selenium_automation_framework](https://github.com/marius-test/selenium_automation_framework).
+Built with **Python**, **Selenium WebDriver**, and the **unittest** framework, this project explores complex web automation challenges with a focus on problem-solving and testing.
 
-Each site feature presents a challenge: how to locate elements, interact with them, and handle browser behavior, leading me to design multiple positive and negative test cases per functionality.
+Each feature pushes testing boundaries, whether it’s locating tricky elements, simulating user behavior, or handling browser quirks, driving the creation of both positive and negative test cases.
 
-I chose **unittest** over `pytest` or `allure` to to keep the test design simple and focused.
+I chose `unittest` for its simplicity, standard library support, and suitability for learning projects.
 
-I have also created a custom test runner, a debug file for troubleshooting, a test template for consistency, and a test debug file to aid in development.
+The project includes a custom test runner, debug tools, and a reusable test template. Future plans include a custom reporter and more fine-grained test control.
 
-I plan to develop a custom reporter and add more granular test control as the project evolves.
+👉 For a full Selenium framework implementation, see: [selenium_automation_framework](https://github.com/marius-test/selenium_automation_framework)
+
+---
+
+### Test Independence
+
+Each test runs **independently**, creating and managing its own WebDriver instance without a shared driver factory. This deliberate design supports the goal of stress-testing complex and tricky functionalities by:
+
+- Ensuring tests do not share state or affect each other  
+- Allowing tests to run in any order or parallel without interference  
+- Making debugging easier by isolating failures  
+- Accepting some overhead from repeated driver setup for maximum robustness
 
 ---
 
@@ -20,7 +31,7 @@ I plan to develop a custom reporter and add more granular test control as the pr
 - **unittest** - testing framework  
 - **Selenium WebDriver** - browser automation  
 - **ChromeDriver** - main driver  
-- **MSEdgeDriver** - alternative driver
+- **MSEdgeDriver** - alternative driver  
 - **Visual Studio Code** - main IDE  
 - **PyCharm** - secondary IDE  
 - **GitHub** - version control system
