@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from utils.driver_factory import get_driver, quit_driver
 
 # test data
-url = "https://the-internet.herokuapp.com/"
+url = "https://the-internet.herokuapp.com"
 expected_title = "Welcome to the-internet"
 expected_subtitle = "Available Examples"
 

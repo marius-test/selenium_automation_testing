@@ -7,14 +7,13 @@ from selenium.webdriver.support import expected_conditions as EC
 from utils.driver_factory import get_driver, quit_driver
 
 # test data
-url = "https://the-internet.herokuapp.com/"
+url = "https://the-internet.herokuapp.com/add_remove_elements"
 
 
 class TestAddRemoveElement(unittest.TestCase):
     def setUp(self):
         self.driver = get_driver()
         self.driver.get(url)
-        self.driver.find_element(By.CSS_SELECTOR, "a[href='/add_remove_elements/']").click()
         WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h3")))
 
     def test_add_element(self):

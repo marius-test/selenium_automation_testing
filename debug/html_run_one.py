@@ -7,7 +7,7 @@ import os
 # add project root to sys.path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-test_modules = ['test2_add_remove_elements']
+test_modules = ['test4_broken_images']
 report_dir = "reports/"
 
 if __name__ == "__main__":

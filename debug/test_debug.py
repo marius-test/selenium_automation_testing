@@ -18,7 +18,7 @@ from utils.driver_factory import get_driver, quit_driver
 from seletools.actions import drag_and_drop
 
 # test data
-url = "https://the-internet.herokuapp.com/"
+url = "https://the-internet.herokuapp.com"
 
 
 class TestName(unittest.TestCase):
