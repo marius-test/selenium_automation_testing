@@ -1,19 +1,17 @@
 import unittest
 import requests
+
 import pyautogui
 from pynput.keyboard import Key, Controller
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
-# PATH = Service("C:\\Users\\marius\\webdriver\\chromedriver.exe")
-chrome_service = Service(ChromeDriverManager().install())
-url = "https://the-internet.herokuapp.com/"
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
+from utils.driver_factory import get_driver, quit_driver
 
 # test data
+url = "https://the-internet.herokuapp.com/"
 username = password = "admin"
 expected_title = "Digest Auth"
 expected_text = "Congratulations! You must have the proper credentials."
@@ -22,9 +20,8 @@ expected_response = "<Response [401]>"
 
 class TestDigestAuth(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome(service=chrome_service)
+        self.driver = get_driver()
         self.driver.get(url)
-        self.driver.maximize_window()
         WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
 
     def test_login_url_successful(self):
@@ -50,8 +47,4 @@ class TestDigestAuth(unittest.TestCase):
         self.assertEqual(expected_response, str(response))
 
     def tearDown(self):
-        self.driver.quit()
-
-
-if __name__ == '__main__':
-    unittest.main()
+        quit_driver(self.driver)

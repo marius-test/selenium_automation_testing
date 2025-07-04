@@ -9,13 +9,30 @@
         "Definiebas",
         "Diceret",
         "geckodriver",
+        "importlip",
         "Iuvaret",
         "mariu",
         "mpmath",
         "Phaedrum",
         "pyautogui",
         "pynput",
+        "pytest",
         "seletools",
-        "untick"
-    ]
+        "untick",
+        "urllib",
+        "venv"
+    ],
+        "cSpell.dictionaryDefinitions": [
+        {
+            "name": "dolorem",
+            "path": "${workspaceFolder}/.vscode/dolorem_ipsum_ignore.txt"
+        }
+    ],
+    "cSpell.dictionaries": [
+        "dolorem"
+    ],
+    "python-envs.pythonProjects": [],
+
+    "python.pythonPath": "venv/Scripts/python.exe",
+    "python.terminal.activateEnvironment": true
 }

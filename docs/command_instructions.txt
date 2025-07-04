@@ -1,0 +1,12 @@
+# File: command_instructions.txt
+# Purpose: Run tests from the PowerShell console
+
+# To run a single test file:
+python -m unittest tests.test0_smoke -v
+
+# To run all tests in the /tests folder:
+python -m unittest discover -s tests -v
+
+# To run one test for debugging with HTML report:
+# Add the test name inside the test_modules list in run_one.py
+python debug/run_one.py

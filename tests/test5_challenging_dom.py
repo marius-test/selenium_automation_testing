@@ -1,16 +1,13 @@
 import unittest
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-# PATH = Service("C:\\Users\\marius\\webdriver\\chromedriver.exe")
-chrome_service = Service(ChromeDriverManager().install())
-url = "https://the-internet.herokuapp.com/"
+from utils.driver_factory import get_driver, quit_driver
 
 # test data
+url = "https://the-internet.herokuapp.com/"
 expected_title = "Challenging DOM"
 expected_text = "The hardest part in automated web testing is finding the best locators (e.g., ones that well named, unique, and unlikely to change). It's more often than not that the application you're testing was not built with this concept in mind. This example demonstrates that with unique IDs, a table with no helpful locators, and a canvas element."
 expected_button_list = ["foo", "bar", "baz", "qux"]
@@ -30,11 +27,10 @@ expected_canvas_size = {'height': 202, 'width': 601}
 
 class TestChallengingDOM(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome(service=chrome_service)
+        self.driver = get_driver()
         self.driver.get(url)
-        self.driver.maximize_window()
-        self.driver.find_element(By.XPATH, "//a[normalize-space()='Challenging DOM']").click()
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h3"))) 
+        self.driver.find_element(By.CSS_SELECTOR, "a[href='/challenging_dom']").click()
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h3")))
 
     def test_title_text(self):
         self.assertEqual(expected_title, self.driver.find_element(By.TAG_NAME, "h3").text)
@@ -109,8 +105,4 @@ class TestChallengingDOM(unittest.TestCase):
         # save the canvas as .png, use OCR to verify that the word "Answer:" is displayed
         
     def tearDown(self):
-        self.driver.quit()
-    
-
-if __name__ == '__main__':
-    unittest.main()
+        quit_driver(self.driver)

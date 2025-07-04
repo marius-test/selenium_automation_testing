@@ -1,13 +1,11 @@
-# import unittest
-# import urllib3
-# import requests
-# import pyautogui
-# import seletools
-import time
 import unittest
-# from pynput.keyboard import Key, Controller
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
+from time import sleep
+
+import urllib3
+import requests
+import pyautogui
+from pynput.keyboard import Key, Controller
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
@@ -15,35 +13,29 @@ from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
-# from webdriver_manager.chrome import ChromeDriverManager
-# import seletools
 
-PATH = Service("C:\\Users\\marius\\webdriver\\chromedriver.exe")
-# chrome_service = Service(ChromeDriverManager().install())
-driver = webdriver.Chrome(service=PATH)
+from utils.driver_factory import get_driver, quit_driver
+from seletools.actions import drag_and_drop
+
+# test data
 url = "https://the-internet.herokuapp.com/"
 
 
-def test_debug():
-    driver.get(url)
-    driver.maximize_window()
-    WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
-    driver.find_element(By.XPATH, "/html/body/div[2]/div/ul/li[12]/a").click()
-    """
-    driver.find_element(By.XPATH, "/html/body/div[2]/div/div/p[2]/a").click()
-    WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h3")))
-    image_1 = driver.find_element(By.XPATH, '//*[@id="content"]/div[1]/div[1]/img')
-    image_2 = driver.find_element(By.XPATH, '//*[@id="content"]/div[2]/div[1]/img')
-    image_1_src = image_1.get_attribute('src')
-    image_2_src = image_2.get_attribute('src')
-    print(image_1_src)
-    print(image_2_src)
-    """
-    dynamic_text = driver.find_element(By.XPATH, '//*[@id="content"]/div[1]/div[2]').text
-    print(dynamic_text)
-    time.sleep(5)
-    driver.quit()
-
-
-if __name__ == '__main__':
-    test_debug()
+class TestName(unittest.TestCase):
+    def setUp(self):
+        self.driver = get_driver()
+        self.driver.get(url)
+        # initialize ActionChains and Alert here if needed
+        # self.action_chains = ActionChains(self.driver)
+        # self.alert = Alert(self.driver)
+    
+    def test_x(self):
+        # locators, waits, actions
+        self.assertEqual(1, 1)
+    
+    def test_y(self):
+        # locators, waits, actions
+        self.assertEqual(True, False)
+    
+    def tearDown(self):
+        quit_driver(self.driver)

@@ -1,22 +1,20 @@
 import unittest
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
+from utils.driver_factory import get_driver, quit_driver
 from seletools.actions import drag_and_drop
 
-# PATH = Service("C:\\Users\\marius\\webdriver\\chromedriver.exe")
-chrome_service = Service(ChromeDriverManager().install())
+# test data
 url = "https://the-internet.herokuapp.com/"
 
 
 class TestDragAndDrop(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome(service=chrome_service)
+        self.driver = get_driver()
         self.driver.get(url)
-        self.driver.maximize_window()
         WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
         self.driver.find_element(By.XPATH, "/html/body/div[2]/div/ul/li[10]/a").click()
     
@@ -37,8 +35,4 @@ class TestDragAndDrop(unittest.TestCase):
         self.assertEqual("A", header[1].text)
 
     def tearDown(self):
-        self.driver.quit()
-
-
-if __name__ == '__main__':
-    unittest.main()
+        quit_driver(self.driver)

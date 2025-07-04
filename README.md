@@ -32,9 +32,15 @@ Each test runs **independently**, creating and managing its own WebDriver instan
 - **Selenium WebDriver** - browser automation  
 - **ChromeDriver** - main driver  
 - **MSEdgeDriver** - alternative driver  
+- **webdriver-manager** - auto-downloads and manages browser drivers (Chrome, Firefox, etc.)  
+- **requests** - simple HTTP requests for REST API testing  
+- **urllib3** - low-level HTTP library (used internally by requests)  
+- **pyautogui** - automates keyboard/mouse actions outside browser scope (e.g., file uploads)  
+- **pynput** - captures keyboard/mouse input, useful for simulating complex user behavior  
+- **html-testRunner** - generates clean and readable HTML test reports for unittest-based test suites  
 - **Visual Studio Code** - main IDE  
 - **PyCharm** - secondary IDE  
-- **GitHub** - version control system
+- **GitHub** - version control system  
 
 ---
 
