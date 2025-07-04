@@ -1,27 +1,16 @@
 {
-    "cSpell.words": [
-        "abtest",
-        "Adipisci",
-        "Amet",
-        "Apeirian",
-        "chromedriver",
-        "Consequuntur",
-        "Definiebas",
-        "Diceret",
-        "geckodriver",
-        "importlip",
-        "Iuvaret",
-        "mariu",
-        "mpmath",
-        "Phaedrum",
-        "pyautogui",
-        "pynput",
-        "pytest",
-        "seletools",
-        "untick",
-        "urllib",
-        "venv"
-    ],
+"cSpell.words": [
+    "abtest",
+    "chromedriver",
+    "importlip",
+    "loguru",
+    "pyautogui",
+    "pynput",
+    "pytest",
+    "seletools",
+    "urllib",
+    "venv"
+],
         "cSpell.dictionaryDefinitions": [
         {
             "name": "dolorem",

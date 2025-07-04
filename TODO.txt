@@ -1,4 +1,1 @@
-TODO basic logging using Python's built-in logging  
-TODO update tests
-TODO run tests to check for errors
-TODO update tests url
+TODO logging using loguru

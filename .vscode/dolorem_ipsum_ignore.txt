@@ -28,7 +28,6 @@ dicta
 dolor
 dolore
 dolorem
-Dolorem
 dolores
 dolorum
 Duis
@@ -38,7 +37,6 @@ eiusmod
 elit
 enim
 eos
-error
 esse
 est
 et
