@@ -8,7 +8,7 @@ Each feature pushes testing boundaries by requiring tricky element location, sim
 
 I chose `unittest` for its straightforward setup, native Python support, and focus on writing clear, maintainable tests.
 
-The project includes a custom test runner, debug tools, and a reusable test template. Future plans include a custom reporter and more granular test control.
+The project includes a custom test runner, driver factory, debug files, a reusable test template, a custom reporter, and documentation with instructions and commands.
 
 👉 For a full Selenium framework implementation, see: [selenium_automation_framework](https://github.com/marius-test/selenium_automation_framework)
 
@@ -16,7 +16,7 @@ The project includes a custom test runner, debug tools, and a reusable test temp
 
 ### Test Independence
 
-Each test runs **independently**, creating and managing its own WebDriver instance without a shared driver factory. This supports stress-testing complex features by:
+Each test runs **independently** with its own WebDriver instance, which is created and managed by a shared driver factory. This setup provides:
 
 - Preventing shared state or test interference  
 - Allowing any test order or parallel execution  
