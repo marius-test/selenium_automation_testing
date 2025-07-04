@@ -1,0 +1,9 @@
+TODO driver factory  
+TODO basic logging using Python's built-in logging  
+TODO minimal environment config  
+    - Set up a clean venv  
+    - Add requirements.txt  
+TODO update README  
+    - Add notes on driver management, structure, how to run  
+TODO HTML reporter  
+    - Use HTMLTestRunner or switch to pytest + pytest-html later
