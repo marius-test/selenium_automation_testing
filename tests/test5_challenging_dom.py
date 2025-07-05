@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from utils.driver_factory import get_driver, quit_driver
 
 # test data
-url = "https://the-internet.herokuapp.com/"
+url = "https://the-internet.herokuapp.com/challenging_dom"
 expected_title = "Challenging DOM"
 expected_text = "The hardest part in automated web testing is finding the best locators (e.g., ones that well named, unique, and unlikely to change). It's more often than not that the application you're testing was not built with this concept in mind. This example demonstrates that with unique IDs, a table with no helpful locators, and a canvas element."
 expected_button_list = ["foo", "bar", "baz", "qux"]
@@ -29,7 +29,6 @@ class TestChallengingDOM(unittest.TestCase):
     def setUp(self):
         self.driver = get_driver()
         self.driver.get(url)
-        self.driver.find_element(By.CSS_SELECTOR, "a[href='/challenging_dom']").click()
         WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h3")))
 
     def test_title_text(self):
@@ -39,9 +38,7 @@ class TestChallengingDOM(unittest.TestCase):
     def test_side_buttons(self):
         tag_a_elements = self.driver.find_elements(By.TAG_NAME, "a")
         for x in range(1, 4):
-            self.assertIn(expected_button_list, tag_a_elements[x].text)
-        # self.assertIn(expected_button_list, driver.find_element(By.CLASS_NAME, "button").text)
-        # self.assertIn(expected_button_list, driver.find_element(By.CLASS_NAME, "button alert").text)
+            self.assertIn(tag_a_elements[x].text, expected_button_list)  # usually expected then actual, but here actual is checked as member of a list
 
     def test_table_actions(self):
         for x in range(1, 11):

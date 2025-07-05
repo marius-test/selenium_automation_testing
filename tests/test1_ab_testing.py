@@ -16,7 +16,8 @@ class TestABTesting(unittest.TestCase):
     def setUp(self):
         self.driver = get_driver()
         self.driver.get(url)
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h3")))
+        SECTION_HEADER_LOCATOR = (By.TAG_NAME, "h3")
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(SECTION_HEADER_LOCATOR))
     
     def test_title_is_correct(self):
         actual_title = self.driver.find_element(By.TAG_NAME, "h3").text

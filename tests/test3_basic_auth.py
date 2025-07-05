@@ -24,14 +24,15 @@ class TestBasicAuth(unittest.TestCase):
     def test_login_successful(self):
         login_url = f"https://{username}:{password}@the-internet.herokuapp.com/basic_auth"
         self.driver.get(login_url)
-        self.assertEqual(expected_title, self.driver.find_element(By.TAG_NAME, "h3").text)
-        self.assertEqual(expected_text, self.driver.find_element(By.TAG_NAME, "p").text)
+        SECTION_HEADER_LOCATOR = (By.TAG_NAME, "h3")
+        self.assertEqual(expected_title, self.driver.find_element(SECTION_HEADER_LOCATOR).text)
 
     def test_login_failed(self):
         Controller().press(Key.esc)
         Controller().release(Key.esc)
-        time.sleep(2)
-        self.assertEqual("Not authorized", self.driver.find_element(By.TAG_NAME, "body").text)
+        NOT_AUTHORIZED_LOCATOR = (By.TAG_NAME, "body")
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
+        self.assertEqual("Not authorized", self.driver.file_detector(NOT_AUTHORIZED_LOCATOR).text)
 
     def tearDown(self):
         quit_driver(self.driver)

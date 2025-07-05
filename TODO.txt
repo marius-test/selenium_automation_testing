@@ -1,1 +1,3 @@
 TODO logging using loguru
+TODO custom waits
+TODO go test by test, you are at test 3 > to run, recheck everything, use best practices
