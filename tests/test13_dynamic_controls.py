@@ -1,30 +1,21 @@
 import unittest
-import urllib3
-import requests
-import pyautogui
-from time import sleep
-
-from pynput.keyboard import Key, Controller
 
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
 
 from utils.driver_factory import get_driver, quit_driver
 
-# test data
-url = "https://the-internet.herokuapp.com/"
+# TEST DATA
+URL = "https://the-internet.herokuapp.com/dynamic_controls"
+
 
 class TestDynamicControls(unittest.TestCase):
     def setUp(self):
         self.driver = get_driver()
-        self.driver.get(url)
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
-        self.driver.find_element(By.XPATH, '//*[@id="content"]/ul/li[13]/a').click()
+        self.driver.get(URL)
+        SECTION_HEADER_LOCATOR = (By.TAG_NAME, "h3")
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(SECTION_HEADER_LOCATOR))
     
     def test_tick_checkbox(self):
         pass
