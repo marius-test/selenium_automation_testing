@@ -9,6 +9,7 @@
     "pytest",
     "pyunitreport",
     "seletools",
+    "untick",
     "urllib",
     "venv"
 ],

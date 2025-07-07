@@ -8,7 +8,7 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 test_modules = [
-    'test2_add_remove_elements'
+    'test3_basic_auth'
 ]
 report_dir = "reports/"
 
@@ -35,4 +35,3 @@ if __name__ == "__main__":
         runner.run(suite)
         
         print(f"Done: {module_name}_report.html\n")
-        

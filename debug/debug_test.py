@@ -3,6 +3,8 @@ import os
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+# <========== TEST CASES STARTS HERE ==========>
+
 import unittest
 # from time import sleep
 
@@ -44,6 +46,8 @@ class TestName(unittest.TestCase):
     
     def tearDown(self):
         quit_driver(self.driver)
+
+# <========== TEST CASES ENDS HERE ==========>
 
 
 if __name__ == "__main__":
