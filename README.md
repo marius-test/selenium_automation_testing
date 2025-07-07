@@ -30,7 +30,7 @@ Each test runs **independently** with its own WebDriver instance, managed by a s
 - **Python** - core programming language  
 - **unittest** - testing framework  
 - **Selenium WebDriver** - browser automation  
-- **ChromeDriver** and **MSEdgeDriver** - supported browsers  
+- **ChromeDriver**, **MSEdgeDriver**, and **GeckoDriver** (Firefox) - supported browser drivers managed by webdriver-manager
 - **webdriver-manager** - automatic driver management  
 - **requests**, **urllib3** - HTTP clients for API testing  
 - **pyautogui**, **pynput** - keyboard/mouse automation and input capturing  
