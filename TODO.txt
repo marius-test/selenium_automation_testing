@@ -1,1 +1,1 @@
-TODO implement logging using loguru
+TODO finish module: test13_dynamic_controls.py
