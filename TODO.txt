@@ -1,2 +1,1 @@
-TODO update readme
 TODO implement logging using loguru
