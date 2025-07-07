@@ -1,13 +1,12 @@
 import unittest
 
-from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
 
 from utils.driver_factory import get_driver, quit_driver
+from utils.waits import wait_for_presence, safe_wait
 
 # TEST DATA
 URL = "https://the-internet.herokuapp.com/context_menu"
@@ -19,11 +18,11 @@ expected_alert = "You selected a context menu"
 
 class TestContextMenu(unittest.TestCase):
     SECTION_HEADER_LOCATOR = (By.TAG_NAME, "h3")
-            
+
     def setUp(self):
         self.driver = get_driver()
         self.driver.get(URL)
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(self.SECTION_HEADER_LOCATOR))
+        wait_for_presence(self.driver, self.SECTION_HEADER_LOCATOR)
 
     def test_title_text(self):
         actual_paragraph = self.driver.find_elements(By.TAG_NAME, "p")
@@ -43,20 +42,18 @@ class TestContextMenu(unittest.TestCase):
         self.assertEqual(expected_alert, actual_alert.text)
 
     def test_alert_box_closed(self):
-        actual_alert = Alert(self.driver)
         action = ActionChains(self.driver)
         box = self.driver.find_element(By.ID, "hot-spot")
         action.context_click(box).perform()
+
+        actual_alert = Alert(self.driver)
         self.assertEqual(expected_alert, actual_alert.text)
         actual_alert.accept()
-        try:
-            WebDriverWait(self.driver, 2).until(EC.alert_is_present())
-        except TimeoutException:
-            alert_is_present = 'No'
-        else:
-            alert_is_present = 'Yes'
-        finally:
-            self.assertTrue(alert_is_present == 'No')
+
+        alert = safe_wait(self.driver, EC.alert_is_present(), timeout=2)
+        alert_is_present = 'Yes' if alert else 'No'
+
+        self.assertTrue(alert_is_present == 'No')
 
     def tearDown(self):
         quit_driver(self.driver)

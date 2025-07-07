@@ -1,2 +1,2 @@
+TODO update readme
 TODO implement logging using loguru
-TODO implement custom waits

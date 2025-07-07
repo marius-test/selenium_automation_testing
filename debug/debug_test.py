@@ -8,10 +8,9 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 import unittest
 
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 from utils.driver_factory import get_driver, quit_driver
+from utils.waits import wait_for_presence
 
 # TEST DATA
 URL = "https://the-internet.herokuapp.com"

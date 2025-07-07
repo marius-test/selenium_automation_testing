@@ -1,10 +1,9 @@
 import unittest
 
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 from utils.driver_factory import get_driver, quit_driver
+from utils.waits import wait_for_presence
 
 # TEST DATA
 URL = "https://the-internet.herokuapp.com/challenging_dom"
@@ -21,11 +20,11 @@ expected_canvas_size = {'height': 202, 'width': 601}
 
 class TestChallengingDOM(unittest.TestCase):
     SECTION_HEADER_LOCATOR = (By.TAG_NAME, "h3")
-    
+
     def setUp(self):
         self.driver = get_driver()
         self.driver.get(URL)
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(self.SECTION_HEADER_LOCATOR))
+        wait_for_presence(self.driver, self.SECTION_HEADER_LOCATOR)
 
     def test_title_text(self):
         self.assertEqual(expected_title, self.driver.find_element(*self.SECTION_HEADER_LOCATOR).text)

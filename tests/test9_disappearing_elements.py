@@ -3,10 +3,9 @@ import requests
 
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
 
 from utils.driver_factory import get_driver, quit_driver
+from utils.waits import wait_for_presence
 
 # TEST DATA
 URL = "https://the-internet.herokuapp.com/disappearing_elements"
@@ -21,11 +20,11 @@ expected_response = ["<Response [200]>", "<Response [404]>", "<Response [404]>",
 
 class TestDisappearingElements(unittest.TestCase):
     SECTION_HEADER_LOCATOR = (By.TAG_NAME, "h3")
-    
+
     def setUp(self):
         self.driver = get_driver()
         self.driver.get(URL)
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(self.SECTION_HEADER_LOCATOR))
+        wait_for_presence(self.driver, self.SECTION_HEADER_LOCATOR)
 
     def test_header_and_paragraph(self):
         self.assertEqual(expected_header, self.driver.find_element(*self.SECTION_HEADER_LOCATOR).text)
@@ -47,7 +46,7 @@ class TestDisappearingElements(unittest.TestCase):
       
     def test_missing_button(self):
         try:
-            WebDriverWait(self.driver, 2).until(EC.presence_of_element_located((By.CSS_SELECTOR, "#content > div > ul > li:nth-child(5) > a")))
+            wait_for_presence(self.driver, (By.CSS_SELECTOR, "#content > div > ul > li:nth-child(5) > a"), 2)
         except TimeoutException:
             button_is_displayed = 'No'
         else:

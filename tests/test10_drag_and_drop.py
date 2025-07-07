@@ -1,10 +1,9 @@
 import unittest
 
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 from utils.driver_factory import get_driver, quit_driver
+from utils.waits import wait_for_presence
 from seletools.actions import drag_and_drop
 
 # TEST DATA
@@ -16,7 +15,7 @@ class TestDragAndDrop(unittest.TestCase):
         self.driver = get_driver()
         self.driver.get(URL)
         SECTION_HEADER_LOCATOR = (By.TAG_NAME, "h3")
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(SECTION_HEADER_LOCATOR))
+        wait_for_presence(self.driver, SECTION_HEADER_LOCATOR)
     
     def test_drag_A_on_B(self):
         source_A = self.driver.find_element(By.ID, 'column-a')
