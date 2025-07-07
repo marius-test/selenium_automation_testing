@@ -8,8 +8,8 @@ from pynput.keyboard import Key, Controller
 
 from utils.driver_factory import get_driver, quit_driver
 
-# test data
-username = password = "admin"
+# TEST DATA
+USERNAME = PASSWORD = "admin"
 expected_title = "Basic Auth"
 expected_unauthorized_message = "Not authorized"
 
@@ -18,7 +18,7 @@ class TestBasicAuth(unittest.TestCase):
         self.driver = get_driver()
 
     def test_login_successful(self):
-        login_url = f"https://{username}:{password}@the-internet.herokuapp.com/basic_auth"
+        login_url = f"https://{USERNAME}:{PASSWORD}@the-internet.herokuapp.com/basic_auth"
         self.driver.get(login_url)
         SECTION_HEADER_LOCATOR = (By.TAG_NAME, "h3")
         WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(SECTION_HEADER_LOCATOR))
@@ -27,8 +27,8 @@ class TestBasicAuth(unittest.TestCase):
 
 
     def test_login_failed(self):
-        url = "https://the-internet.herokuapp.com/basic_auth"
-        self.driver.get(url)
+        URL = "https://the-internet.herokuapp.com/basic_auth"
+        self.driver.get(URL)
         Controller().press(Key.esc)
         Controller().release(Key.esc)
         BODY_TEXT_LOCATOR = (By.TAG_NAME, "body")

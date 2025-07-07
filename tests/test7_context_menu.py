@@ -9,45 +9,46 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 from utils.driver_factory import get_driver, quit_driver
 
-# test data
-url = "https://the-internet.herokuapp.com/"
+# TEST DATA
+URL = "https://the-internet.herokuapp.com/context_menu"
 expected_title = "Context Menu"
-expected_text_1 = "Context menu items are custom additions that appear in the right-click menu."
-expected_text_2 = "Right-click in the box below to see one called 'the-internet'. When you click it, it will trigger a JavaScript alert."
-expected_alert_text = "You selected a context menu"
+expected_paragraph_1 = "Context menu items are custom additions that appear in the right-click menu."
+expected_paragraph_2 = "Right-click in the box below to see one called 'the-internet'. When you click it, it will trigger a JavaScript alert."
+expected_alert = "You selected a context menu"
 
 
 class TestContextMenu(unittest.TestCase):
+    SECTION_HEADER_LOCATOR = (By.TAG_NAME, "h3")
+            
     def setUp(self):
         self.driver = get_driver()
-        self.driver.get(url)
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
-        self.driver.find_element(By.XPATH, "//a[normalize-space()='Context Menu']").click()
+        self.driver.get(URL)
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(self.SECTION_HEADER_LOCATOR))
 
     def test_title_text(self):
-        paragraph = self.driver.find_elements(By.TAG_NAME, "p")
-        self.assertEqual(expected_title, self.driver.find_element(By.TAG_NAME, "h3").text)
-        self.assertEqual(expected_text_1, paragraph[0].text)
-        self.assertEqual(expected_text_2, paragraph[1].text)
+        actual_paragraph = self.driver.find_elements(By.TAG_NAME, "p")
+        self.assertEqual(expected_title, self.driver.find_element(*self.SECTION_HEADER_LOCATOR).text)
+        self.assertEqual(expected_paragraph_1, actual_paragraph[0].text)
+        self.assertEqual(expected_paragraph_2, actual_paragraph[1].text)
         
     def test_box_properties(self):
         style = self.driver.find_element(By.ID, "hot-spot").get_attribute("style")
         self.assertEqual("border-style: dashed; border-width: 5px; width: 250px; height: 150px;", style)
 
     def test_alert_box_open(self):
-        alert = Alert(self.driver)
+        actual_alert = Alert(self.driver)
         action = ActionChains(self.driver)
         box = self.driver.find_element(By.ID, "hot-spot")
         action.context_click(box).perform()
-        self.assertEqual(expected_alert_text, alert.text)
+        self.assertEqual(expected_alert, actual_alert.text)
 
     def test_alert_box_closed(self):
-        alert = Alert(self.driver)
+        actual_alert = Alert(self.driver)
         action = ActionChains(self.driver)
         box = self.driver.find_element(By.ID, "hot-spot")
         action.context_click(box).perform()
-        self.assertEqual(expected_alert_text, alert.text)
-        alert.accept()
+        self.assertEqual(expected_alert, actual_alert.text)
+        actual_alert.accept()
         try:
             WebDriverWait(self.driver, 2).until(EC.alert_is_present())
         except TimeoutException:

@@ -7,14 +7,14 @@ from selenium.webdriver.support import expected_conditions as EC
 from utils.driver_factory import get_driver, quit_driver
 from seletools.actions import drag_and_drop
 
-# test data
-url = "https://the-internet.herokuapp.com/"
+# TEST DATA
+URL = "https://the-internet.herokuapp.com/"
 
 
 class TestDragAndDrop(unittest.TestCase):
     def setUp(self):
         self.driver = get_driver()
-        self.driver.get(url)
+        self.driver.get(URL)
         WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
         self.driver.find_element(By.XPATH, "/html/body/div[2]/div/ul/li[10]/a").click()
     

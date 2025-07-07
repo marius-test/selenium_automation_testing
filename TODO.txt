@@ -1,2 +1,4 @@
 TODO implement logging using loguru
 TODO implement custom waits
+TODO replace XPATH
+TODO refactor tests

@@ -6,17 +6,17 @@ from selenium.webdriver.support import expected_conditions as EC
 
 from utils.driver_factory import get_driver, quit_driver
 
-# test data
-url = "https://the-internet.herokuapp.com/"
+# TEST DATA
+URL = "https://the-internet.herokuapp.com/checkboxes"
 expected_text = "checkbox 1\ncheckbox 2"
 
 
 class TestCheckboxes(unittest.TestCase):
     def setUp(self):
         self.driver = get_driver()
-        self.driver.get(url)
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
-        self.driver.find_element(By.XPATH, "//a[normalize-space()='Checkboxes']").click()
+        self.driver.get(URL)
+        SECTION_HEADER_LOCATOR = (By.TAG_NAME, "h3")
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(SECTION_HEADER_LOCATOR))
 
     def test_text(self):
         checkbox_string = self.driver.find_element(By.TAG_NAME, "form").text

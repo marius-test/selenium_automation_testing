@@ -10,37 +10,39 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 from utils.driver_factory import get_driver, quit_driver
 
-# test data
-url = "https://the-internet.herokuapp.com/"
-username = password = "admin"
+# TEST DATA
+URL = "https://the-internet.herokuapp.com/digest_auth"
+USERNAME = PASSWORD = "admin"
+LOGIN_URL = f"https://{USERNAME}:{PASSWORD}@the-internet.herokuapp.com/digest_auth"
 expected_title = "Digest Auth"
-expected_text = "Congratulations! You must have the proper credentials."
+expected_message = "Congratulations! You must have the proper credentials."
 expected_response = "<Response [401]>"
 
 
 class TestDigestAuth(unittest.TestCase):
+    SECTION_HEADER_LOCATOR = (By.TAG_NAME, "h3")
+    MESSAGE_PARAGRAPH_LOCATOR = (By.TAG_NAME, "p")
+    
     def setUp(self):
         self.driver = get_driver()
-        self.driver.get(url)
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
 
     def test_login_url_successful(self):
-        login_url = f"https://{username}:{password}@the-internet.herokuapp.com/digest_auth"
-        self.driver.get(login_url)
-        self.assertEqual(expected_title, self.driver.find_element(by=By.TAG_NAME, value="h3").text)
-        self.assertEqual(expected_text, self.driver.find_element(by=By.TAG_NAME, value="p").text)
+
+        self.driver.get(LOGIN_URL)
+        self.assertEqual(expected_title, self.driver.find_element(*self.SECTION_HEADER_LOCATOR).text)
+        self.assertEqual(expected_message, self.driver.find_element(*self.MESSAGE_PARAGRAPH_LOCATOR).text)
 
     def test_login_credentials_successful(self):
-        self.driver.find_element(by=By.XPATH, value="/html/body/div[2]/div/ul/li[8]/a").click()
-        pyautogui.write(username)
+        self.driver.get(URL)
+        pyautogui.write(USERNAME)
         pyautogui.press('tab')
-        pyautogui.write(password)
+        pyautogui.write(PASSWORD)
         pyautogui.press('enter')
-        self.assertEqual(expected_title, self.driver.find_element(by=By.TAG_NAME, value="h3").text)
-        self.assertEqual(expected_text, self.driver.find_element(by=By.TAG_NAME, value="p").text)
+        self.assertEqual(expected_title, self.driver.find_element(*self.SECTION_HEADER_LOCATOR).text)
+        self.assertEqual(expected_message, self.driver.find_element(*self.MESSAGE_PARAGRAPH_LOCATOR).text)
 
     def test_login_failed(self):
-        self.driver.find_element(by=By.XPATH, value="/html/body/div[2]/div/ul/li[8]/a").click()
+        self.driver.get(URL)
         Controller().press(Key.esc)
         Controller().release(Key.esc)
         response = requests.get(self.driver.current_url, stream=True)

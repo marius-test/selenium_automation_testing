@@ -7,18 +7,20 @@ from selenium.webdriver.support import expected_conditions as EC
 
 from utils.driver_factory import get_driver, quit_driver
 
-# test data
-url = "https://the-internet.herokuapp.com/broken_images"
+# TEST DATA
+URL = "https://the-internet.herokuapp.com/broken_images"
 
 
 class TestBrokenImages(unittest.TestCase):
     def setUp(self):
         self.driver = get_driver()
-        self.driver.get(url)
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h3")))
+        self.driver.get(URL)
+        SECTION_HEADER_LOCATOR = (By.TAG_NAME, "h3")
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(SECTION_HEADER_LOCATOR))
     
     def test_broken_images(self):
-        image_list = self.driver.find_elements(By.TAG_NAME, "img")
+        IMAGE_LOCATOR = (By.TAG_NAME, "img")
+        image_list = self.driver.find_elements(*IMAGE_LOCATOR)
         broken_images = 0
         for image in image_list:
             response = requests.get(image.get_attribute('src'), stream=True)

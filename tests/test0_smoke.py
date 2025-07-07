@@ -6,21 +6,22 @@ from selenium.webdriver.support import expected_conditions as EC
 
 from utils.driver_factory import get_driver, quit_driver
 
-# test data
-url = "https://the-internet.herokuapp.com"
+# TEST DATA
+URL = "https://the-internet.herokuapp.com"
 expected_title = "Welcome to the-internet"
 expected_subtitle = "Available Examples"
 
 
 class TestSmoke(unittest.TestCase):
+    HEADER_LOCATOR = (By.TAG_NAME, "h1")
+    
     def setUp(self):
         self.driver = get_driver()
-        self.driver.get(url)
-        HEADER_LOCATOR = (By.TAG_NAME, "h1")
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(HEADER_LOCATOR))
-    
+        self.driver.get(URL)
+        
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(self.HEADER_LOCATOR))
     def test_homepage_reached(self):
-        actual_title = self.driver.find_element(By.TAG_NAME, "h1").text
+        actual_title = self.driver.find_element(*self.HEADER_LOCATOR).text
         actual_subtitle = self.driver.find_element(By.TAG_NAME, "h2").text
         self.assertEqual(expected_title, actual_title)
         self.assertEqual(expected_subtitle, actual_subtitle)

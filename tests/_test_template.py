@@ -17,14 +17,14 @@ from selenium.common.exceptions import TimeoutException
 from utils.driver_factory import get_driver, quit_driver
 from seletools.actions import drag_and_drop
 
-# test data
-url = "https://the-internet.herokuapp.com"
+# TEST DATA
+URL = "https://the-internet.herokuapp.com"
 
 
 class TestName(unittest.TestCase):
     def setUp(self):
         self.driver = get_driver()
-        self.driver.get(url)
+        self.driver.get(URL)
         # initialize ActionChains and Alert here if needed
         # self.action_chains = ActionChains(self.driver)
         # self.alert = Alert(self.driver)
