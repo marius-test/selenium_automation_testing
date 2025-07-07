@@ -36,7 +36,6 @@ class TestDisappearingElements(unittest.TestCase):
         for i, button in enumerate(list_of_buttons):
             self.assertEqual(expected_buttons[i], button.text)
 
-
     def test_buttons_redirect(self):
         list_of_buttons = self.driver.find_elements(By.TAG_NAME, "a")
         for i in range(0, 4):

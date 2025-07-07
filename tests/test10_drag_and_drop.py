@@ -8,15 +8,15 @@ from utils.driver_factory import get_driver, quit_driver
 from seletools.actions import drag_and_drop
 
 # TEST DATA
-URL = "https://the-internet.herokuapp.com/"
+URL = "https://the-internet.herokuapp.com/drag_and_drop"
 
 
 class TestDragAndDrop(unittest.TestCase):
     def setUp(self):
         self.driver = get_driver()
         self.driver.get(URL)
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
-        self.driver.find_element(By.XPATH, "/html/body/div[2]/div/ul/li[10]/a").click()
+        SECTION_HEADER_LOCATOR = (By.TAG_NAME, "h3")
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(SECTION_HEADER_LOCATOR))
     
     def test_drag_A_on_B(self):
         source_A = self.driver.find_element(By.ID, 'column-a')
