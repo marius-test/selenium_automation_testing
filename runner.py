@@ -20,7 +20,7 @@ test_modules = [
     'test9_disappearing_elements',
     'test10_drag_and_drop',
     'test11_dropdown',
-    'test12_dynamic_content',
+    'test12_dynamic_content'
 ]
 
 report_dir = "reports/"

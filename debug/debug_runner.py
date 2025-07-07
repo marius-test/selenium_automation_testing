@@ -8,7 +8,10 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 test_modules = [
-    'test13_dynamic_controls'
+    'test9_disappearing_elements',
+    'test10_drag_and_drop',
+    'test11_dropdown',
+    'test12_dynamic_content'
 ]
 report_dir = "reports/"
 

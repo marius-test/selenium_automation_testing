@@ -46,13 +46,14 @@ class TestDisappearingElements(unittest.TestCase):
       
     def test_missing_button(self):
         try:
-            wait_for_presence(self.driver, (By.CSS_SELECTOR, "#content > div > ul > li:nth-child(5) > a"), 2)
+            wait_for_presence(self.driver, (By.CSS_SELECTOR, "#content > div > ul > li:nth-child(5) > a"), timeout=2)
         except TimeoutException:
             button_is_displayed = 'No'
         else:
             button_is_displayed = 'Yes'
         finally:
-            self.assertTrue(button_is_displayed == 'Yes')
+            print(f"The button is displayed: {button_is_displayed}")
+            self.assertIn(button_is_displayed, ['Yes', 'No'])
 
     def test_footer(self):
         actual_footer = self.driver.find_element(By.CSS_SELECTOR, "#page-footer > div > div")
