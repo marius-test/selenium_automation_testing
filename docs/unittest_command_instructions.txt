@@ -1,17 +1,21 @@
-# File: command_instructions.txt
+# File: unittest_command_instructions.txt
 # Purpose: Run tests from the PowerShell console
 
 # To run a single test file:
 python -m unittest tests.test0_smoke -v
 
-# To run the a single test from the debug_test.py file
-python -m debug.debug_test TestName.test_x -v
+# To run a single test method from a test file:
+# python -m unittest <module>.<TestClass>.<test_method> -v
+
+# Example:
+# To run only the `test_title_is_correct` method from TestABTesting in tests/test_ab_testing.py:
+python -m unittest tests.test1_ab_testing.TestABTesting.test_title_is_correct -v
 
 # To run all tests in the /tests folder:
 python -m unittest discover -s tests -v
 
 # To run one test for debugging with HTML report:
-# Add the test name inside the test_modules list in run_one.py
+# Add the test name inside the test_modules list in debug_runner.py
 python debug/debug_runner.py
 
 # -v stands for verbose mode (more details)

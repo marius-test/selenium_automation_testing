@@ -1,16 +1,16 @@
 import unittest
 import HtmlTestRunner
-import importlib
+import importlib  # dynamic importing of modules like test0_smoke.py
 import sys
 import os
 
-# add project root to sys.path
+# add project root directory to sys.path so 'tests' package can be imported
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 test_modules = [
-    'test13_dynamic_controls'
+    'test0_smoke'
 ]
-report_dir = "reports/"
+report_dir = "debug/"
 
 if __name__ == "__main__":
     for module_name in test_modules:
@@ -26,7 +26,7 @@ if __name__ == "__main__":
         # define HtmlTestRunner
         runner=HtmlTestRunner.HTMLTestRunner(
             output=report_dir,
-            report_name=f"{module_name}_report",
+            report_name=f"{module_name}_debug_report",
             combine_reports=True,
             add_timestamp=False
         )
@@ -34,4 +34,4 @@ if __name__ == "__main__":
         # run the test suite
         runner.run(suite)
         
-        print(f"Done: {module_name}_report.html\n")
+        print(f"Done: {module_name}_debug_report.html\n")

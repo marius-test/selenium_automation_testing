@@ -22,7 +22,6 @@ test_modules = [
     'test11_dropdown',
     'test12_dynamic_content'
 ]
-
 report_dir = "reports/"
 
 if __name__ == "__main__":
