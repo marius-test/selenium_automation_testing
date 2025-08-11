@@ -1,5 +1,5 @@
 # File: unittest_command_instructions.txt
-# Purpose: Run tests from the PowerShell console
+# Purpose: Run tests from the PowerShell console.
 
 # To run a single test file:
 python -m unittest tests.test0_smoke -v
@@ -18,4 +18,4 @@ python -m unittest discover -s tests -v
 # Add the test name inside the test_modules list in debug_runner.py
 python debug/debug_runner.py
 
-# -v stands for verbose mode (more details)
+# -v enables verbose output.
