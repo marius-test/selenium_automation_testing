@@ -19,6 +19,5 @@ URL = "https://the-internet.herokuapp.com"
 
 # <========== TEST CASES ENDS HERE ==========>
 
-
 if __name__ == "__main__":
     unittest.main(verbosity=2)
